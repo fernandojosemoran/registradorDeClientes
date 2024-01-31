@@ -1,0 +1,14 @@
+C:\Users\ferna\OneDrive\Escritorio\registroDeClientes\RegistradorDeClientes\RegistradorDeClientes\bin\Debug\RegistradorDeClientes.exe.config
+C:\Users\ferna\OneDrive\Escritorio\registroDeClientes\RegistradorDeClientes\RegistradorDeClientes\bin\Debug\RegistradorDeClientes.exe
+C:\Users\ferna\OneDrive\Escritorio\registroDeClientes\RegistradorDeClientes\RegistradorDeClientes\bin\Debug\RegistradorDeClientes.pdb
+C:\Users\ferna\OneDrive\Escritorio\registroDeClientes\RegistradorDeClientes\RegistradorDeClientes\bin\Debug\RegistradorDeClientes.xml
+C:\Users\ferna\OneDrive\Escritorio\registroDeClientes\RegistradorDeClientes\RegistradorDeClientes\obj\Debug\RegistradorDeClientes.vbproj.AssemblyReference.cache
+C:\Users\ferna\OneDrive\Escritorio\registroDeClientes\RegistradorDeClientes\RegistradorDeClientes\obj\Debug\RegistradorDeClientes.Form1.resources
+C:\Users\ferna\OneDrive\Escritorio\registroDeClientes\RegistradorDeClientes\RegistradorDeClientes\obj\Debug\RegistradorDeClientes.ListadorDeClientes.resources
+C:\Users\ferna\OneDrive\Escritorio\registroDeClientes\RegistradorDeClientes\RegistradorDeClientes\obj\Debug\RegistradorDeClientes.Resources.resources
+C:\Users\ferna\OneDrive\Escritorio\registroDeClientes\RegistradorDeClientes\RegistradorDeClientes\obj\Debug\RegistradorDeClientes.vbproj.GenerateResource.cache
+C:\Users\ferna\OneDrive\Escritorio\registroDeClientes\RegistradorDeClientes\RegistradorDeClientes\obj\Debug\RegistradorDeClientes.vbproj.CoreCompileInputs.cache
+C:\Users\ferna\OneDrive\Escritorio\registroDeClientes\RegistradorDeClientes\RegistradorDeClientes\obj\Debug\RegistradorDeClientes.exe
+C:\Users\ferna\OneDrive\Escritorio\registroDeClientes\RegistradorDeClientes\RegistradorDeClientes\obj\Debug\RegistradorDeClientes.xml
+C:\Users\ferna\OneDrive\Escritorio\registroDeClientes\RegistradorDeClientes\RegistradorDeClientes\obj\Debug\RegistradorDeClientes.pdb
+C:\Users\ferna\OneDrive\Escritorio\registroDeClientes\RegistradorDeClientes\RegistradorDeClientes\obj\Debug\RegistradorDeClientes.CreateClient.resources
