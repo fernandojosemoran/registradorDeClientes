@@ -28,7 +28,20 @@ Partial Class ListadorDeClientes
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.btnMinimizar = New System.Windows.Forms.Button()
+        Me.btnExpandir = New System.Windows.Forms.Button()
+        Me.Code = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Nombre = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Apellido = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Email = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Numero = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Direccion = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FechaNacimiento = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Genero = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.EstadoCivil = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'btnAgregarCliente
@@ -37,9 +50,9 @@ Partial Class ListadorDeClientes
         Me.btnAgregarCliente.BackgroundImage = CType(resources.GetObject("btnAgregarCliente.BackgroundImage"), System.Drawing.Image)
         Me.btnAgregarCliente.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btnAgregarCliente.Font = New System.Drawing.Font("JetBrains Mono NL", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAgregarCliente.Location = New System.Drawing.Point(787, 12)
+        Me.btnAgregarCliente.Location = New System.Drawing.Point(522, 11)
         Me.btnAgregarCliente.Name = "btnAgregarCliente"
-        Me.btnAgregarCliente.Size = New System.Drawing.Size(40, 29)
+        Me.btnAgregarCliente.Size = New System.Drawing.Size(33, 29)
         Me.btnAgregarCliente.TabIndex = 0
         Me.btnAgregarCliente.UseVisualStyleBackColor = True
         '
@@ -49,15 +62,16 @@ Partial Class ListadorDeClientes
         Me.btnCerrar.BackgroundImage = CType(resources.GetObject("btnCerrar.BackgroundImage"), System.Drawing.Image)
         Me.btnCerrar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btnCerrar.Font = New System.Drawing.Font("JetBrains Mono NL", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCerrar.Location = New System.Drawing.Point(833, 12)
+        Me.btnCerrar.Location = New System.Drawing.Point(816, 10)
         Me.btnCerrar.Name = "btnCerrar"
-        Me.btnCerrar.Size = New System.Drawing.Size(40, 29)
+        Me.btnCerrar.Size = New System.Drawing.Size(29, 29)
         Me.btnCerrar.TabIndex = 1
         Me.btnCerrar.UseVisualStyleBackColor = False
         '
         'DataGridView1
         '
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Code, Me.Nombre, Me.Apellido, Me.Email, Me.Numero, Me.Direccion, Me.FechaNacimiento, Me.Genero, Me.EstadoCivil})
         Me.DataGridView1.Location = New System.Drawing.Point(46, 70)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.Size = New System.Drawing.Size(827, 418)
@@ -68,7 +82,7 @@ Partial Class ListadorDeClientes
         Me.TextBox1.Location = New System.Drawing.Point(46, 12)
         Me.TextBox1.Multiline = True
         Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(657, 28)
+        Me.TextBox1.Size = New System.Drawing.Size(477, 28)
         Me.TextBox1.TabIndex = 3
         '
         'Button1
@@ -77,11 +91,93 @@ Partial Class ListadorDeClientes
         Me.Button1.BackgroundImage = CType(resources.GetObject("Button1.BackgroundImage"), System.Drawing.Image)
         Me.Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.Button1.Font = New System.Drawing.Font("JetBrains Mono NL", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(699, 12)
+        Me.Button1.Location = New System.Drawing.Point(482, 10)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(34, 29)
+        Me.Button1.Size = New System.Drawing.Size(34, 30)
         Me.Button1.TabIndex = 4
         Me.Button1.UseVisualStyleBackColor = True
+        '
+        'Panel1
+        '
+        Me.Panel1.BackColor = System.Drawing.Color.Black
+        Me.Panel1.Controls.Add(Me.btnMinimizar)
+        Me.Panel1.Controls.Add(Me.Button1)
+        Me.Panel1.Controls.Add(Me.btnExpandir)
+        Me.Panel1.Controls.Add(Me.btnAgregarCliente)
+        Me.Panel1.Controls.Add(Me.btnCerrar)
+        Me.Panel1.Location = New System.Drawing.Point(36, 1)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(848, 50)
+        Me.Panel1.TabIndex = 5
+        '
+        'btnMinimizar
+        '
+        Me.btnMinimizar.BackColor = System.Drawing.Color.Transparent
+        Me.btnMinimizar.BackgroundImage = CType(resources.GetObject("btnMinimizar.BackgroundImage"), System.Drawing.Image)
+        Me.btnMinimizar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnMinimizar.Font = New System.Drawing.Font("JetBrains Mono NL", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnMinimizar.Location = New System.Drawing.Point(746, 10)
+        Me.btnMinimizar.Name = "btnMinimizar"
+        Me.btnMinimizar.Size = New System.Drawing.Size(29, 29)
+        Me.btnMinimizar.TabIndex = 7
+        Me.btnMinimizar.UseVisualStyleBackColor = False
+        '
+        'btnExpandir
+        '
+        Me.btnExpandir.BackColor = System.Drawing.Color.Transparent
+        Me.btnExpandir.BackgroundImage = CType(resources.GetObject("btnExpandir.BackgroundImage"), System.Drawing.Image)
+        Me.btnExpandir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnExpandir.Font = New System.Drawing.Font("JetBrains Mono NL", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnExpandir.Location = New System.Drawing.Point(781, 10)
+        Me.btnExpandir.Name = "btnExpandir"
+        Me.btnExpandir.Size = New System.Drawing.Size(29, 29)
+        Me.btnExpandir.TabIndex = 6
+        Me.btnExpandir.UseVisualStyleBackColor = False
+        '
+        'Code
+        '
+        Me.Code.HeaderText = "Code"
+        Me.Code.Name = "Code"
+        '
+        'Nombre
+        '
+        Me.Nombre.HeaderText = "Nombre"
+        Me.Nombre.Name = "Nombre"
+        '
+        'Apellido
+        '
+        Me.Apellido.HeaderText = "Apellido"
+        Me.Apellido.Name = "Apellido"
+        '
+        'Email
+        '
+        Me.Email.HeaderText = "Email"
+        Me.Email.Name = "Email"
+        '
+        'Numero
+        '
+        Me.Numero.HeaderText = "Numero"
+        Me.Numero.Name = "Numero"
+        '
+        'Direccion
+        '
+        Me.Direccion.HeaderText = "Direccion"
+        Me.Direccion.Name = "Direccion"
+        '
+        'FechaNacimiento
+        '
+        Me.FechaNacimiento.HeaderText = "FechaNacimiento"
+        Me.FechaNacimiento.Name = "FechaNacimiento"
+        '
+        'Genero
+        '
+        Me.Genero.HeaderText = "Genero"
+        Me.Genero.Name = "Genero"
+        '
+        'EstadoCivil
+        '
+        Me.EstadoCivil.HeaderText = "EstadoCivil"
+        Me.EstadoCivil.Name = "EstadoCivil"
         '
         'ListadorDeClientes
         '
@@ -91,14 +187,15 @@ Partial Class ListadorDeClientes
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(917, 534)
         Me.Controls.Add(Me.TextBox1)
-        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.DataGridView1)
-        Me.Controls.Add(Me.btnCerrar)
-        Me.Controls.Add(Me.btnAgregarCliente)
+        Me.Controls.Add(Me.Panel1)
         Me.DoubleBuffered = True
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "ListadorDeClientes"
         Me.Text = "ListadorDeClientes"
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel1.ResumeLayout(False)
+        Me.Panel1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -109,4 +206,16 @@ Partial Class ListadorDeClientes
     Friend WithEvents DataGridView1 As DataGridView
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents Button1 As Button
+    Friend WithEvents Panel1 As Panel
+    Friend WithEvents btnExpandir As Button
+    Friend WithEvents btnMinimizar As Button
+    Friend WithEvents Code As DataGridViewTextBoxColumn
+    Friend WithEvents Nombre As DataGridViewTextBoxColumn
+    Friend WithEvents Apellido As DataGridViewTextBoxColumn
+    Friend WithEvents Email As DataGridViewTextBoxColumn
+    Friend WithEvents Numero As DataGridViewTextBoxColumn
+    Friend WithEvents Direccion As DataGridViewTextBoxColumn
+    Friend WithEvents FechaNacimiento As DataGridViewTextBoxColumn
+    Friend WithEvents Genero As DataGridViewTextBoxColumn
+    Friend WithEvents EstadoCivil As DataGridViewTextBoxColumn
 End Class

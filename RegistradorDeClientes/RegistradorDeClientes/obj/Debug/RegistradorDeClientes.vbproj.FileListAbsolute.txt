@@ -12,3 +12,10 @@ C:\Users\ferna\OneDrive\Escritorio\registroDeClientes\RegistradorDeClientes\Regi
 C:\Users\ferna\OneDrive\Escritorio\registroDeClientes\RegistradorDeClientes\RegistradorDeClientes\obj\Debug\RegistradorDeClientes.xml
 C:\Users\ferna\OneDrive\Escritorio\registroDeClientes\RegistradorDeClientes\RegistradorDeClientes\obj\Debug\RegistradorDeClientes.pdb
 C:\Users\ferna\OneDrive\Escritorio\registroDeClientes\RegistradorDeClientes\RegistradorDeClientes\obj\Debug\RegistradorDeClientes.CreateClient.resources
+C:\Users\ferna\OneDrive\Escritorio\registroDeClientes\RegistradorDeClientes\RegistradorDeClientes\bin\Debug\FluentValidation.dll
+C:\Users\ferna\OneDrive\Escritorio\registroDeClientes\RegistradorDeClientes\RegistradorDeClientes\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\ferna\OneDrive\Escritorio\registroDeClientes\RegistradorDeClientes\RegistradorDeClientes\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\ferna\OneDrive\Escritorio\registroDeClientes\RegistradorDeClientes\RegistradorDeClientes\bin\Debug\FluentValidation.xml
+C:\Users\ferna\OneDrive\Escritorio\registroDeClientes\RegistradorDeClientes\RegistradorDeClientes\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\ferna\OneDrive\Escritorio\registroDeClientes\RegistradorDeClientes\RegistradorDeClientes\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\ferna\OneDrive\Escritorio\registroDeClientes\RegistradorDeClientes\RegistradorDeClientes\obj\Debug\RegistradorDeClientes.vbproj.CopyComplete

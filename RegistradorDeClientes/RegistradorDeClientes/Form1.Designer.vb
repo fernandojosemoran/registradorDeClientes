@@ -30,7 +30,15 @@ Partial Class Form1
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.btnMinimizarVentana = New System.Windows.Forms.Button()
+        Me.btnExpandirVentana = New System.Windows.Forms.Button()
+        Me.btnCerrarVentana = New System.Windows.Forms.Button()
+        Me.btnMinimizar = New System.Windows.Forms.Button()
+        Me.btnExpandir = New System.Windows.Forms.Button()
+        Me.btnCerrar = New System.Windows.Forms.Button()
         Me.pnlCamposDeAutenticacion.SuspendLayout()
+        Me.Panel3.SuspendLayout()
         Me.SuspendLayout()
         '
         'pnlCamposDeAutenticacion
@@ -103,6 +111,92 @@ Partial Class Form1
         Me.Button1.Text = "Aceptar"
         Me.Button1.UseVisualStyleBackColor = True
         '
+        'Panel3
+        '
+        Me.Panel3.BackColor = System.Drawing.Color.Black
+        Me.Panel3.Controls.Add(Me.btnMinimizarVentana)
+        Me.Panel3.Controls.Add(Me.btnExpandirVentana)
+        Me.Panel3.Controls.Add(Me.btnCerrarVentana)
+        Me.Panel3.Controls.Add(Me.btnMinimizar)
+        Me.Panel3.Controls.Add(Me.btnExpandir)
+        Me.Panel3.Controls.Add(Me.btnCerrar)
+        Me.Panel3.Location = New System.Drawing.Point(670, -5)
+        Me.Panel3.Name = "Panel3"
+        Me.Panel3.Size = New System.Drawing.Size(136, 51)
+        Me.Panel3.TabIndex = 7
+        '
+        'btnMinimizarVentana
+        '
+        Me.btnMinimizarVentana.AutoSize = True
+        Me.btnMinimizarVentana.BackgroundImage = CType(resources.GetObject("btnMinimizarVentana.BackgroundImage"), System.Drawing.Image)
+        Me.btnMinimizarVentana.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnMinimizarVentana.Font = New System.Drawing.Font("JetBrains Mono NL", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnMinimizarVentana.Location = New System.Drawing.Point(13, 11)
+        Me.btnMinimizarVentana.Name = "btnMinimizarVentana"
+        Me.btnMinimizarVentana.Size = New System.Drawing.Size(33, 29)
+        Me.btnMinimizarVentana.TabIndex = 10
+        Me.btnMinimizarVentana.UseVisualStyleBackColor = True
+        '
+        'btnExpandirVentana
+        '
+        Me.btnExpandirVentana.AutoSize = True
+        Me.btnExpandirVentana.BackgroundImage = CType(resources.GetObject("btnExpandirVentana.BackgroundImage"), System.Drawing.Image)
+        Me.btnExpandirVentana.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnExpandirVentana.Font = New System.Drawing.Font("JetBrains Mono NL", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnExpandirVentana.Location = New System.Drawing.Point(52, 11)
+        Me.btnExpandirVentana.Name = "btnExpandirVentana"
+        Me.btnExpandirVentana.Size = New System.Drawing.Size(33, 29)
+        Me.btnExpandirVentana.TabIndex = 9
+        Me.btnExpandirVentana.UseVisualStyleBackColor = True
+        '
+        'btnCerrarVentana
+        '
+        Me.btnCerrarVentana.AutoSize = True
+        Me.btnCerrarVentana.BackgroundImage = CType(resources.GetObject("btnCerrarVentana.BackgroundImage"), System.Drawing.Image)
+        Me.btnCerrarVentana.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnCerrarVentana.Font = New System.Drawing.Font("JetBrains Mono NL", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnCerrarVentana.Location = New System.Drawing.Point(91, 11)
+        Me.btnCerrarVentana.Name = "btnCerrarVentana"
+        Me.btnCerrarVentana.Size = New System.Drawing.Size(33, 29)
+        Me.btnCerrarVentana.TabIndex = 8
+        Me.btnCerrarVentana.UseVisualStyleBackColor = True
+        '
+        'btnMinimizar
+        '
+        Me.btnMinimizar.BackColor = System.Drawing.Color.Transparent
+        Me.btnMinimizar.BackgroundImage = CType(resources.GetObject("btnMinimizar.BackgroundImage"), System.Drawing.Image)
+        Me.btnMinimizar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnMinimizar.Font = New System.Drawing.Font("JetBrains Mono NL", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnMinimizar.Location = New System.Drawing.Point(746, 10)
+        Me.btnMinimizar.Name = "btnMinimizar"
+        Me.btnMinimizar.Size = New System.Drawing.Size(29, 29)
+        Me.btnMinimizar.TabIndex = 7
+        Me.btnMinimizar.UseVisualStyleBackColor = False
+        '
+        'btnExpandir
+        '
+        Me.btnExpandir.BackColor = System.Drawing.Color.Transparent
+        Me.btnExpandir.BackgroundImage = CType(resources.GetObject("btnExpandir.BackgroundImage"), System.Drawing.Image)
+        Me.btnExpandir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnExpandir.Font = New System.Drawing.Font("JetBrains Mono NL", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnExpandir.Location = New System.Drawing.Point(781, 10)
+        Me.btnExpandir.Name = "btnExpandir"
+        Me.btnExpandir.Size = New System.Drawing.Size(29, 29)
+        Me.btnExpandir.TabIndex = 6
+        Me.btnExpandir.UseVisualStyleBackColor = False
+        '
+        'btnCerrar
+        '
+        Me.btnCerrar.BackColor = System.Drawing.Color.Transparent
+        Me.btnCerrar.BackgroundImage = CType(resources.GetObject("btnCerrar.BackgroundImage"), System.Drawing.Image)
+        Me.btnCerrar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnCerrar.Font = New System.Drawing.Font("JetBrains Mono NL", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnCerrar.Location = New System.Drawing.Point(814, 10)
+        Me.btnCerrar.Name = "btnCerrar"
+        Me.btnCerrar.Size = New System.Drawing.Size(29, 29)
+        Me.btnCerrar.TabIndex = 1
+        Me.btnCerrar.UseVisualStyleBackColor = False
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -110,12 +204,16 @@ Partial Class Form1
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(806, 455)
+        Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.pnlCamposDeAutenticacion)
         Me.DoubleBuffered = True
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "Form1"
         Me.Text = "Store Express"
         Me.pnlCamposDeAutenticacion.ResumeLayout(False)
         Me.pnlCamposDeAutenticacion.PerformLayout()
+        Me.Panel3.ResumeLayout(False)
+        Me.Panel3.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -127,4 +225,11 @@ Partial Class Form1
     Friend WithEvents Button1 As Button
     Friend WithEvents Panel2 As Panel
     Friend WithEvents Panel1 As Panel
+    Friend WithEvents Panel3 As Panel
+    Friend WithEvents btnMinimizarVentana As Button
+    Friend WithEvents btnExpandirVentana As Button
+    Friend WithEvents btnCerrarVentana As Button
+    Friend WithEvents btnMinimizar As Button
+    Friend WithEvents btnExpandir As Button
+    Friend WithEvents btnCerrar As Button
 End Class
