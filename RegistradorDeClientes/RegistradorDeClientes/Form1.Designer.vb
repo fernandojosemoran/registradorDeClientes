@@ -27,9 +27,9 @@ Partial Class Form1
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.lblNombreDeEmpresa = New System.Windows.Forms.Label()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.txtAceptar = New System.Windows.Forms.Button()
+        Me.txtPassword = New System.Windows.Forms.TextBox()
+        Me.txtUsuario = New System.Windows.Forms.TextBox()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.btnMinimizarVentana = New System.Windows.Forms.Button()
         Me.btnExpandirVentana = New System.Windows.Forms.Button()
@@ -47,9 +47,9 @@ Partial Class Form1
         Me.pnlCamposDeAutenticacion.Controls.Add(Me.Panel2)
         Me.pnlCamposDeAutenticacion.Controls.Add(Me.Panel1)
         Me.pnlCamposDeAutenticacion.Controls.Add(Me.lblNombreDeEmpresa)
-        Me.pnlCamposDeAutenticacion.Controls.Add(Me.TextBox2)
-        Me.pnlCamposDeAutenticacion.Controls.Add(Me.TextBox1)
-        Me.pnlCamposDeAutenticacion.Controls.Add(Me.Button1)
+        Me.pnlCamposDeAutenticacion.Controls.Add(Me.txtAceptar)
+        Me.pnlCamposDeAutenticacion.Controls.Add(Me.txtPassword)
+        Me.pnlCamposDeAutenticacion.Controls.Add(Me.txtUsuario)
         Me.pnlCamposDeAutenticacion.Location = New System.Drawing.Point(170, 73)
         Me.pnlCamposDeAutenticacion.Name = "pnlCamposDeAutenticacion"
         Me.pnlCamposDeAutenticacion.Size = New System.Drawing.Size(456, 309)
@@ -86,30 +86,33 @@ Partial Class Form1
         Me.lblNombreDeEmpresa.Text = "Store Express"
         Me.lblNombreDeEmpresa.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'TextBox2
+        'txtAceptar
         '
-        Me.TextBox2.Location = New System.Drawing.Point(111, 144)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.TextBox2.Size = New System.Drawing.Size(234, 20)
-        Me.TextBox2.TabIndex = 2
+        Me.txtAceptar.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtAceptar.Location = New System.Drawing.Point(185, 209)
+        Me.txtAceptar.Name = "txtAceptar"
+        Me.txtAceptar.Size = New System.Drawing.Size(75, 23)
+        Me.txtAceptar.TabIndex = 0
+        Me.txtAceptar.Text = "Aceptar"
+        Me.txtAceptar.UseVisualStyleBackColor = True
         '
-        'TextBox1
+        'txtPassword
         '
-        Me.TextBox1.Location = New System.Drawing.Point(110, 88)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(234, 20)
-        Me.TextBox1.TabIndex = 1
+        Me.txtPassword.Font = New System.Drawing.Font("Segoe UI", 8.25!)
+        Me.txtPassword.Location = New System.Drawing.Point(111, 144)
+        Me.txtPassword.Name = "txtPassword"
+        Me.txtPassword.Size = New System.Drawing.Size(234, 22)
+        Me.txtPassword.TabIndex = 2
+        Me.txtPassword.Text = "Contrasena"
         '
-        'Button1
+        'txtUsuario
         '
-        Me.Button1.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(185, 209)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 0
-        Me.Button1.Text = "Aceptar"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.txtUsuario.Font = New System.Drawing.Font("Segoe UI", 8.25!)
+        Me.txtUsuario.Location = New System.Drawing.Point(110, 88)
+        Me.txtUsuario.Name = "txtUsuario"
+        Me.txtUsuario.Size = New System.Drawing.Size(234, 22)
+        Me.txtUsuario.TabIndex = 1
+        Me.txtUsuario.Text = "Usuario"
         '
         'Panel3
         '
@@ -220,9 +223,9 @@ Partial Class Form1
 
     Friend WithEvents pnlCamposDeAutenticacion As Panel
     Friend WithEvents lblNombreDeEmpresa As Label
-    Friend WithEvents TextBox2 As TextBox
-    Friend WithEvents TextBox1 As TextBox
-    Friend WithEvents Button1 As Button
+    Friend WithEvents txtPassword As TextBox
+    Friend WithEvents txtUsuario As TextBox
+    Friend WithEvents txtAceptar As Button
     Friend WithEvents Panel2 As Panel
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Panel3 As Panel
