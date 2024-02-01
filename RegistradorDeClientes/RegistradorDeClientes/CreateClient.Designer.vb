@@ -43,7 +43,7 @@ Partial Class CreateClient
         Me.txtDireccion = New System.Windows.Forms.TextBox()
         Me.cbGenero = New System.Windows.Forms.ComboBox()
         Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.dtpFecha = New System.Windows.Forms.DateTimePicker()
+        Me.dtpFechaDeNacimiento = New System.Windows.Forms.DateTimePicker()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.cbEstadoCivil = New System.Windows.Forms.ComboBox()
@@ -122,11 +122,12 @@ Partial Class CreateClient
         '
         'lblAlerts
         '
-        Me.lblAlerts.Font = New System.Drawing.Font("Segoe UI", 8.25!)
+        Me.lblAlerts.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblAlerts.Location = New System.Drawing.Point(223, 423)
         Me.lblAlerts.Name = "lblAlerts"
-        Me.lblAlerts.Size = New System.Drawing.Size(392, 50)
+        Me.lblAlerts.Size = New System.Drawing.Size(394, 62)
         Me.lblAlerts.TabIndex = 9
+        Me.lblAlerts.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'btnListo
         '
@@ -151,8 +152,10 @@ Partial Class CreateClient
         '
         'txtNombre
         '
+        Me.txtNombre.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtNombre.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.txtNombre.Location = New System.Drawing.Point(79, 86)
+        Me.txtNombre.MaxLength = 20
         Me.txtNombre.Multiline = True
         Me.txtNombre.Name = "txtNombre"
         Me.txtNombre.Size = New System.Drawing.Size(173, 24)
@@ -171,8 +174,10 @@ Partial Class CreateClient
         '
         'txtApellido
         '
+        Me.txtApellido.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtApellido.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.txtApellido.Location = New System.Drawing.Point(79, 129)
+        Me.txtApellido.MaxLength = 30
         Me.txtApellido.Multiline = True
         Me.txtApellido.Name = "txtApellido"
         Me.txtApellido.Size = New System.Drawing.Size(173, 24)
@@ -191,6 +196,7 @@ Partial Class CreateClient
         '
         'txtEmail
         '
+        Me.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtEmail.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.txtEmail.Location = New System.Drawing.Point(79, 173)
         Me.txtEmail.Multiline = True
@@ -211,8 +217,10 @@ Partial Class CreateClient
         '
         'txtTelefono
         '
+        Me.txtTelefono.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtTelefono.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.txtTelefono.Location = New System.Drawing.Point(79, 219)
+        Me.txtTelefono.MaxLength = 8
         Me.txtTelefono.Multiline = True
         Me.txtTelefono.Name = "txtTelefono"
         Me.txtTelefono.Size = New System.Drawing.Size(173, 24)
@@ -231,8 +239,10 @@ Partial Class CreateClient
         '
         'txtDireccion
         '
+        Me.txtDireccion.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtDireccion.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.txtDireccion.Location = New System.Drawing.Point(79, 267)
+        Me.txtDireccion.MaxLength = 50
         Me.txtDireccion.Multiline = True
         Me.txtDireccion.Name = "txtDireccion"
         Me.txtDireccion.Size = New System.Drawing.Size(173, 24)
@@ -261,21 +271,21 @@ Partial Class CreateClient
         Me.Panel2.Size = New System.Drawing.Size(29, 21)
         Me.Panel2.TabIndex = 22
         '
-        'dtpFecha
+        'dtpFechaDeNacimiento
         '
-        Me.dtpFecha.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+        Me.dtpFechaDeNacimiento.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.dtpFecha.CalendarFont = New System.Drawing.Font("Segoe UI", 8.25!)
-        Me.dtpFecha.Checked = False
-        Me.dtpFecha.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpFecha.Location = New System.Drawing.Point(628, 86)
-        Me.dtpFecha.MinDate = New Date(1980, 1, 1, 0, 0, 0, 0)
-        Me.dtpFecha.Name = "dtpFecha"
-        Me.dtpFecha.RightToLeftLayout = True
-        Me.dtpFecha.Size = New System.Drawing.Size(173, 20)
-        Me.dtpFecha.TabIndex = 23
-        Me.dtpFecha.UseWaitCursor = True
+        Me.dtpFechaDeNacimiento.CalendarFont = New System.Drawing.Font("Segoe UI", 8.25!)
+        Me.dtpFechaDeNacimiento.Checked = False
+        Me.dtpFechaDeNacimiento.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtpFechaDeNacimiento.Location = New System.Drawing.Point(628, 86)
+        Me.dtpFechaDeNacimiento.MinDate = New Date(1980, 1, 1, 0, 0, 0, 0)
+        Me.dtpFechaDeNacimiento.Name = "dtpFechaDeNacimiento"
+        Me.dtpFechaDeNacimiento.RightToLeftLayout = True
+        Me.dtpFechaDeNacimiento.Size = New System.Drawing.Size(173, 20)
+        Me.dtpFechaDeNacimiento.TabIndex = 23
+        Me.dtpFechaDeNacimiento.UseWaitCursor = True
         '
         'Panel3
         '
@@ -346,7 +356,7 @@ Partial Class CreateClient
         Me.Controls.Add(Me.Panel4)
         Me.Controls.Add(Me.cbEstadoCivil)
         Me.Controls.Add(Me.Panel3)
-        Me.Controls.Add(Me.dtpFecha)
+        Me.Controls.Add(Me.dtpFechaDeNacimiento)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.cbGenero)
         Me.Controls.Add(Me.pnlDireccion)
@@ -395,7 +405,7 @@ Partial Class CreateClient
     Friend WithEvents txtDireccion As TextBox
     Friend WithEvents cbGenero As ComboBox
     Friend WithEvents Panel2 As Panel
-    Friend WithEvents dtpFecha As DateTimePicker
+    Friend WithEvents dtpFechaDeNacimiento As DateTimePicker
     Friend WithEvents Panel3 As Panel
     Friend WithEvents Panel4 As Panel
     Friend WithEvents cbEstadoCivil As ComboBox

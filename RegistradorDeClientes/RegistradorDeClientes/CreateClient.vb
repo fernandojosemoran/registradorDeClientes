@@ -69,7 +69,44 @@ Public Class CreateClient
     End Sub
 
     Private Sub btnListo_Click(sender As Object, e As EventArgs) Handles btnListo.Click
-        Me.Hide()
+        Dim modeloDeCliente As New ClientModel()
+
+        Dim verificarRelleno = Function(textActual As String, indicador As String)
+                                   If textActual = indicador Then
+                                       Return ""
+                                   Else
+                                       Return textActual
+                                   End If
+                               End Function
+
+        modeloDeCliente.SetNombre = verificarRelleno(txtNombre.Text, "Nombre")
+        modeloDeCliente.SetApellido = verificarRelleno(txtApellido.Text, "Apellido")
+        modeloDeCliente.SetEmail = verificarRelleno(txtEmail.Text, "Email")
+        modeloDeCliente.SetNumero = verificarRelleno(txtTelefono.Text, "Telefono")
+        modeloDeCliente.SetDireccion = verificarRelleno(txtDireccion.Text, "Direccion")
+        modeloDeCliente.SetEstadoCivil = cbEstadoCivil.Text
+        modeloDeCliente.SetGenero = cbGenero.Text
+
+        Dim validator As ValidationClientSchema = New ValidationClientSchema()
+        Dim result As ValidationResult = validator.Validate(modeloDeCliente)
+
+        If result.IsValid Then
+            ListadorDeClientes.dgListaDeUsuarios.Columns.Add("Codigo", Guid.NewGuid().ToString())
+            ListadorDeClientes.dgListaDeUsuarios.Columns.Add("Nombre", txtNombre.Text)
+            ListadorDeClientes.dgListaDeUsuarios.Columns.Add("Apellido", txtApellido.Text)
+            ListadorDeClientes.dgListaDeUsuarios.Columns.Add("Email", txtEmail.Text)
+            ListadorDeClientes.dgListaDeUsuarios.Columns.Add("Numero", txtTelefono.Text)
+            ListadorDeClientes.dgListaDeUsuarios.Columns.Add("Direccion", txtDireccion.Text)
+            ListadorDeClientes.dgListaDeUsuarios.Columns.Add("FechaNacimiento", dtpFechaDeNacimiento.Text)
+            ListadorDeClientes.dgListaDeUsuarios.Columns.Add("Genero", cbGenero.Text)
+            ListadorDeClientes.dgListaDeUsuarios.Columns.Add("EstadoCivil", cbEstadoCivil.Text)
+            Me.Hide()
+        Else
+            For Each [err] As ValidationFailure In result.Errors
+                ' Acciones que deseas realizar con cada error, por ejemplo:
+                lblAlerts.Text = [err].ErrorMessage
+            Next
+        End If
     End Sub
 
     Private Sub txtNombre_GoFocus(sender As Object, e As EventArgs) Handles txtNombre.GotFocus
@@ -82,10 +119,6 @@ Public Class CreateClient
         If txtNombre.Text = "" Then
             txtNombre.Text = "Nombre"
         End If
-
-        Dim modeloDeCliente As New ClientModel()
-        Dim validator As ValidationClientSchema = New ValidationClientSchema()
-        Dim result As ValidationResult = validator.Validate(modeloDeCliente)
     End Sub
 
     Private Sub txtApellido_GotFocus(sender As Object, e As EventArgs) Handles txtApellido.GotFocus

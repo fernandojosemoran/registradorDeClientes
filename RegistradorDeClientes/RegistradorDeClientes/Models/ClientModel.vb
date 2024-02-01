@@ -4,12 +4,11 @@
     Public nombre As String
     Public apellido As String
     Public email As String
-    Public numero As Integer
+    Public numero As String
     Public direccion As String
     Public fechaNacimiento As String
     Public genero As String
     Public estadoCivil As String
-    Public fechaRegistro As String
     Public fechaCreacion As String
     Public fechaActualizacion As String
     Public ReadOnly Property GetNombre As String
@@ -39,8 +38,23 @@
         End Get
     End Property
 
+    Public ReadOnly Property GetEstadoCivil As String
+        Get
+            Return estadoCivil
+        End Get
+    End Property
 
+    Public ReadOnly Property GetGenero As String
+        Get
+            Return genero
+        End Get
+    End Property
 
+    Public ReadOnly Property GetFechaDeNacimiento As String
+        Get
+            Return fechaNacimiento
+        End Get
+    End Property
 
 
     Public WriteOnly Property SetEmail As String
@@ -69,4 +83,21 @@
             apellido = value
         End Set
     End Property
+    Public WriteOnly Property SetEstadoCivil As String
+        Set(value As String)
+            estadoCivil = value
+        End Set
+    End Property
+    Public WriteOnly Property SetGenero As String
+        Set(value As String)
+            genero = value
+        End Set
+    End Property
+
+    Public WriteOnly Property SetFechaDeNacimiento As String
+        Set(value As String)
+            fechaNacimiento = value
+        End Set
+    End Property
+
 End Class

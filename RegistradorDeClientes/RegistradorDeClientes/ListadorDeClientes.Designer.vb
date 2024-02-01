@@ -26,6 +26,11 @@ Partial Class ListadorDeClientes
         Me.btnAgregarCliente = New System.Windows.Forms.Button()
         Me.btnCerrar = New System.Windows.Forms.Button()
         Me.dgListaDeUsuarios = New System.Windows.Forms.DataGridView()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.pnlBuscar = New System.Windows.Forms.Panel()
+        Me.btnMinimizar = New System.Windows.Forms.Button()
+        Me.btnExpandir = New System.Windows.Forms.Button()
         Me.Code = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Nombre = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Apellido = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -35,11 +40,6 @@ Partial Class ListadorDeClientes
         Me.FechaNacimiento = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Genero = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.EstadoCivil = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.btnMinimizar = New System.Windows.Forms.Button()
-        Me.pnlBuscar = New System.Windows.Forms.Panel()
-        Me.btnExpandir = New System.Windows.Forms.Button()
         CType(Me.dgListaDeUsuarios, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
@@ -77,9 +77,65 @@ Partial Class ListadorDeClientes
         Me.dgListaDeUsuarios.Size = New System.Drawing.Size(827, 418)
         Me.dgListaDeUsuarios.TabIndex = 2
         '
+        'TextBox1
+        '
+        Me.TextBox1.Font = New System.Drawing.Font("Segoe UI", 8.25!)
+        Me.TextBox1.Location = New System.Drawing.Point(46, 12)
+        Me.TextBox1.Multiline = True
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(477, 28)
+        Me.TextBox1.TabIndex = 3
+        '
+        'Panel1
+        '
+        Me.Panel1.BackColor = System.Drawing.Color.Black
+        Me.Panel1.Controls.Add(Me.pnlBuscar)
+        Me.Panel1.Controls.Add(Me.btnMinimizar)
+        Me.Panel1.Controls.Add(Me.btnExpandir)
+        Me.Panel1.Controls.Add(Me.btnAgregarCliente)
+        Me.Panel1.Controls.Add(Me.btnCerrar)
+        Me.Panel1.Location = New System.Drawing.Point(36, 1)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(848, 50)
+        Me.Panel1.TabIndex = 5
+        '
+        'pnlBuscar
+        '
+        Me.pnlBuscar.BackColor = System.Drawing.Color.White
+        Me.pnlBuscar.BackgroundImage = CType(resources.GetObject("pnlBuscar.BackgroundImage"), System.Drawing.Image)
+        Me.pnlBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.pnlBuscar.Location = New System.Drawing.Point(484, 10)
+        Me.pnlBuscar.Name = "pnlBuscar"
+        Me.pnlBuscar.Size = New System.Drawing.Size(31, 29)
+        Me.pnlBuscar.TabIndex = 8
+        '
+        'btnMinimizar
+        '
+        Me.btnMinimizar.BackColor = System.Drawing.Color.Transparent
+        Me.btnMinimizar.BackgroundImage = CType(resources.GetObject("btnMinimizar.BackgroundImage"), System.Drawing.Image)
+        Me.btnMinimizar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnMinimizar.Font = New System.Drawing.Font("JetBrains Mono NL", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnMinimizar.Location = New System.Drawing.Point(746, 10)
+        Me.btnMinimizar.Name = "btnMinimizar"
+        Me.btnMinimizar.Size = New System.Drawing.Size(29, 29)
+        Me.btnMinimizar.TabIndex = 7
+        Me.btnMinimizar.UseVisualStyleBackColor = False
+        '
+        'btnExpandir
+        '
+        Me.btnExpandir.BackColor = System.Drawing.Color.Transparent
+        Me.btnExpandir.BackgroundImage = CType(resources.GetObject("btnExpandir.BackgroundImage"), System.Drawing.Image)
+        Me.btnExpandir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnExpandir.Font = New System.Drawing.Font("JetBrains Mono NL", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnExpandir.Location = New System.Drawing.Point(781, 10)
+        Me.btnExpandir.Name = "btnExpandir"
+        Me.btnExpandir.Size = New System.Drawing.Size(29, 29)
+        Me.btnExpandir.TabIndex = 6
+        Me.btnExpandir.UseVisualStyleBackColor = False
+        '
         'Code
         '
-        Me.Code.HeaderText = "Code"
+        Me.Code.HeaderText = "Codigo"
         Me.Code.Name = "Code"
         '
         'Nombre
@@ -122,62 +178,6 @@ Partial Class ListadorDeClientes
         Me.EstadoCivil.HeaderText = "EstadoCivil"
         Me.EstadoCivil.Name = "EstadoCivil"
         '
-        'TextBox1
-        '
-        Me.TextBox1.Font = New System.Drawing.Font("Segoe UI", 8.25!)
-        Me.TextBox1.Location = New System.Drawing.Point(46, 12)
-        Me.TextBox1.Multiline = True
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(477, 28)
-        Me.TextBox1.TabIndex = 3
-        '
-        'Panel1
-        '
-        Me.Panel1.BackColor = System.Drawing.Color.Black
-        Me.Panel1.Controls.Add(Me.pnlBuscar)
-        Me.Panel1.Controls.Add(Me.btnMinimizar)
-        Me.Panel1.Controls.Add(Me.btnExpandir)
-        Me.Panel1.Controls.Add(Me.btnAgregarCliente)
-        Me.Panel1.Controls.Add(Me.btnCerrar)
-        Me.Panel1.Location = New System.Drawing.Point(36, 1)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(848, 50)
-        Me.Panel1.TabIndex = 5
-        '
-        'btnMinimizar
-        '
-        Me.btnMinimizar.BackColor = System.Drawing.Color.Transparent
-        Me.btnMinimizar.BackgroundImage = CType(resources.GetObject("btnMinimizar.BackgroundImage"), System.Drawing.Image)
-        Me.btnMinimizar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.btnMinimizar.Font = New System.Drawing.Font("JetBrains Mono NL", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnMinimizar.Location = New System.Drawing.Point(746, 10)
-        Me.btnMinimizar.Name = "btnMinimizar"
-        Me.btnMinimizar.Size = New System.Drawing.Size(29, 29)
-        Me.btnMinimizar.TabIndex = 7
-        Me.btnMinimizar.UseVisualStyleBackColor = False
-        '
-        'pnlBuscar
-        '
-        Me.pnlBuscar.BackColor = System.Drawing.Color.White
-        Me.pnlBuscar.BackgroundImage = CType(resources.GetObject("pnlBuscar.BackgroundImage"), System.Drawing.Image)
-        Me.pnlBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.pnlBuscar.Location = New System.Drawing.Point(484, 10)
-        Me.pnlBuscar.Name = "pnlBuscar"
-        Me.pnlBuscar.Size = New System.Drawing.Size(31, 29)
-        Me.pnlBuscar.TabIndex = 8
-        '
-        'btnExpandir
-        '
-        Me.btnExpandir.BackColor = System.Drawing.Color.Transparent
-        Me.btnExpandir.BackgroundImage = CType(resources.GetObject("btnExpandir.BackgroundImage"), System.Drawing.Image)
-        Me.btnExpandir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.btnExpandir.Font = New System.Drawing.Font("JetBrains Mono NL", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnExpandir.Location = New System.Drawing.Point(781, 10)
-        Me.btnExpandir.Name = "btnExpandir"
-        Me.btnExpandir.Size = New System.Drawing.Size(29, 29)
-        Me.btnExpandir.TabIndex = 6
-        Me.btnExpandir.UseVisualStyleBackColor = False
-        '
         'ListadorDeClientes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -207,6 +207,7 @@ Partial Class ListadorDeClientes
     Friend WithEvents Panel1 As Panel
     Friend WithEvents btnExpandir As Button
     Friend WithEvents btnMinimizar As Button
+    Friend WithEvents pnlBuscar As Panel
     Friend WithEvents Code As DataGridViewTextBoxColumn
     Friend WithEvents Nombre As DataGridViewTextBoxColumn
     Friend WithEvents Apellido As DataGridViewTextBoxColumn
@@ -216,5 +217,4 @@ Partial Class ListadorDeClientes
     Friend WithEvents FechaNacimiento As DataGridViewTextBoxColumn
     Friend WithEvents Genero As DataGridViewTextBoxColumn
     Friend WithEvents EstadoCivil As DataGridViewTextBoxColumn
-    Friend WithEvents pnlBuscar As Panel
 End Class
