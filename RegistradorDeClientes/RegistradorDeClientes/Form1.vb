@@ -1,7 +1,12 @@
-﻿Public Class Form1
+﻿
+
+Imports System.Data.SqlClient
+
+Public Class Form1
     Private xOffset As Integer
     Private yOffset As Integer
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        MessageBox.Show(Environment.GetEnvironmentVariable("DB_STORE_EXPRESS"))
 
     End Sub
 

@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class ListadorDeClientes
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class ListadorDeClientes
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ListadorDeClientes))
         Me.btnAgregarCliente = New System.Windows.Forms.Button()
@@ -31,15 +31,6 @@ Partial Class ListadorDeClientes
         Me.pnlBuscar = New System.Windows.Forms.Panel()
         Me.btnMinimizar = New System.Windows.Forms.Button()
         Me.btnExpandir = New System.Windows.Forms.Button()
-        Me.Code = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Nombre = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Apellido = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Email = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Numero = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Direccion = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.FechaNacimiento = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Genero = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.EstadoCivil = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.dgListaDeUsuarios, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
@@ -70,8 +61,8 @@ Partial Class ListadorDeClientes
         '
         'dgListaDeUsuarios
         '
+        Me.dgListaDeUsuarios.BackgroundColor = System.Drawing.SystemColors.ControlDarkDark
         Me.dgListaDeUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgListaDeUsuarios.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Code, Me.Nombre, Me.Apellido, Me.Email, Me.Numero, Me.Direccion, Me.FechaNacimiento, Me.Genero, Me.EstadoCivil})
         Me.dgListaDeUsuarios.Location = New System.Drawing.Point(46, 70)
         Me.dgListaDeUsuarios.Name = "dgListaDeUsuarios"
         Me.dgListaDeUsuarios.Size = New System.Drawing.Size(827, 418)
@@ -79,6 +70,7 @@ Partial Class ListadorDeClientes
         '
         'TextBox1
         '
+        Me.TextBox1.BackColor = System.Drawing.Color.Gray
         Me.TextBox1.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.TextBox1.Location = New System.Drawing.Point(46, 12)
         Me.TextBox1.Multiline = True
@@ -133,51 +125,6 @@ Partial Class ListadorDeClientes
         Me.btnExpandir.TabIndex = 6
         Me.btnExpandir.UseVisualStyleBackColor = False
         '
-        'Code
-        '
-        Me.Code.HeaderText = "Codigo"
-        Me.Code.Name = "Code"
-        '
-        'Nombre
-        '
-        Me.Nombre.HeaderText = "Nombre"
-        Me.Nombre.Name = "Nombre"
-        '
-        'Apellido
-        '
-        Me.Apellido.HeaderText = "Apellido"
-        Me.Apellido.Name = "Apellido"
-        '
-        'Email
-        '
-        Me.Email.HeaderText = "Email"
-        Me.Email.Name = "Email"
-        '
-        'Numero
-        '
-        Me.Numero.HeaderText = "Numero"
-        Me.Numero.Name = "Numero"
-        '
-        'Direccion
-        '
-        Me.Direccion.HeaderText = "Direccion"
-        Me.Direccion.Name = "Direccion"
-        '
-        'FechaNacimiento
-        '
-        Me.FechaNacimiento.HeaderText = "FechaNacimiento"
-        Me.FechaNacimiento.Name = "FechaNacimiento"
-        '
-        'Genero
-        '
-        Me.Genero.HeaderText = "Genero"
-        Me.Genero.Name = "Genero"
-        '
-        'EstadoCivil
-        '
-        Me.EstadoCivil.HeaderText = "EstadoCivil"
-        Me.EstadoCivil.Name = "EstadoCivil"
-        '
         'ListadorDeClientes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -208,13 +155,4 @@ Partial Class ListadorDeClientes
     Friend WithEvents btnExpandir As Button
     Friend WithEvents btnMinimizar As Button
     Friend WithEvents pnlBuscar As Panel
-    Friend WithEvents Code As DataGridViewTextBoxColumn
-    Friend WithEvents Nombre As DataGridViewTextBoxColumn
-    Friend WithEvents Apellido As DataGridViewTextBoxColumn
-    Friend WithEvents Email As DataGridViewTextBoxColumn
-    Friend WithEvents Numero As DataGridViewTextBoxColumn
-    Friend WithEvents Direccion As DataGridViewTextBoxColumn
-    Friend WithEvents FechaNacimiento As DataGridViewTextBoxColumn
-    Friend WithEvents Genero As DataGridViewTextBoxColumn
-    Friend WithEvents EstadoCivil As DataGridViewTextBoxColumn
 End Class

@@ -1,4 +1,7 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
+﻿Imports System.Data.SqlClient
+Imports Npgsql
+
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class CreateClient
     Inherits System.Windows.Forms.Form
 
@@ -43,12 +46,12 @@ Partial Class CreateClient
         Me.txtDireccion = New System.Windows.Forms.TextBox()
         Me.cbGenero = New System.Windows.Forms.ComboBox()
         Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.dtpFechaDeNacimiento = New System.Windows.Forms.DateTimePicker()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.cbEstadoCivil = New System.Windows.Forms.ComboBox()
         Me.Panel5 = New System.Windows.Forms.Panel()
         Me.dtpFechaDeRegistro = New System.Windows.Forms.DateTimePicker()
+        Me.dtpFechaDeNacimiento = New System.Windows.Forms.DateTimePicker()
         CType(Me.pbVisualizador, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
@@ -271,22 +274,6 @@ Partial Class CreateClient
         Me.Panel2.Size = New System.Drawing.Size(29, 21)
         Me.Panel2.TabIndex = 22
         '
-        'dtpFechaDeNacimiento
-        '
-        Me.dtpFechaDeNacimiento.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.dtpFechaDeNacimiento.CalendarFont = New System.Drawing.Font("Segoe UI", 8.25!)
-        Me.dtpFechaDeNacimiento.Checked = False
-        Me.dtpFechaDeNacimiento.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpFechaDeNacimiento.Location = New System.Drawing.Point(628, 86)
-        Me.dtpFechaDeNacimiento.MinDate = New Date(1980, 1, 1, 0, 0, 0, 0)
-        Me.dtpFechaDeNacimiento.Name = "dtpFechaDeNacimiento"
-        Me.dtpFechaDeNacimiento.RightToLeftLayout = True
-        Me.dtpFechaDeNacimiento.Size = New System.Drawing.Size(173, 20)
-        Me.dtpFechaDeNacimiento.TabIndex = 23
-        Me.dtpFechaDeNacimiento.UseWaitCursor = True
-        '
         'Panel3
         '
         Me.Panel3.BackgroundImage = CType(resources.GetObject("Panel3.BackgroundImage"), System.Drawing.Image)
@@ -344,6 +331,23 @@ Partial Class CreateClient
         Me.dtpFechaDeRegistro.TabIndex = 27
         Me.dtpFechaDeRegistro.UseWaitCursor = True
         '
+        'dtpFechaDeNacimiento
+        '
+        Me.dtpFechaDeNacimiento.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.dtpFechaDeNacimiento.CalendarFont = New System.Drawing.Font("Segoe UI", 8.25!)
+        Me.dtpFechaDeNacimiento.Checked = False
+        Me.dtpFechaDeNacimiento.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtpFechaDeNacimiento.Location = New System.Drawing.Point(628, 87)
+        Me.dtpFechaDeNacimiento.MaxDate = New Date(2024, 12, 31, 0, 0, 0, 0)
+        Me.dtpFechaDeNacimiento.MinDate = New Date(1980, 1, 1, 0, 0, 0, 0)
+        Me.dtpFechaDeNacimiento.Name = "dtpFechaDeNacimiento"
+        Me.dtpFechaDeNacimiento.RightToLeftLayout = True
+        Me.dtpFechaDeNacimiento.Size = New System.Drawing.Size(173, 20)
+        Me.dtpFechaDeNacimiento.TabIndex = 29
+        Me.dtpFechaDeNacimiento.UseWaitCursor = True
+        '
         'CreateClient
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -351,12 +355,12 @@ Partial Class CreateClient
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(872, 512)
+        Me.Controls.Add(Me.dtpFechaDeNacimiento)
         Me.Controls.Add(Me.Panel5)
         Me.Controls.Add(Me.dtpFechaDeRegistro)
         Me.Controls.Add(Me.Panel4)
         Me.Controls.Add(Me.cbEstadoCivil)
         Me.Controls.Add(Me.Panel3)
-        Me.Controls.Add(Me.dtpFechaDeNacimiento)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.cbGenero)
         Me.Controls.Add(Me.pnlDireccion)
@@ -405,10 +409,10 @@ Partial Class CreateClient
     Friend WithEvents txtDireccion As TextBox
     Friend WithEvents cbGenero As ComboBox
     Friend WithEvents Panel2 As Panel
-    Friend WithEvents dtpFechaDeNacimiento As DateTimePicker
     Friend WithEvents Panel3 As Panel
     Friend WithEvents Panel4 As Panel
     Friend WithEvents cbEstadoCivil As ComboBox
     Friend WithEvents Panel5 As Panel
     Friend WithEvents dtpFechaDeRegistro As DateTimePicker
+    Friend WithEvents dtpFechaDeNacimiento As DateTimePicker
 End Class

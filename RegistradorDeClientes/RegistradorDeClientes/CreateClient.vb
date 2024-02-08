@@ -1,4 +1,6 @@
-﻿Imports FluentValidation.Results
+﻿
+Imports System.Data.SqlClient
+Imports FluentValidation.Results
 
 Public Class CreateClient
     Private xOffset As Integer
@@ -69,6 +71,7 @@ Public Class CreateClient
     End Sub
 
     Private Sub btnListo_Click(sender As Object, e As EventArgs) Handles btnListo.Click
+
         Dim modeloDeCliente As New ClientModel()
 
         Dim verificarRelleno = Function(textActual As String, indicador As String)
@@ -86,20 +89,30 @@ Public Class CreateClient
         modeloDeCliente.SetDireccion = verificarRelleno(txtDireccion.Text, "Direccion")
         modeloDeCliente.SetEstadoCivil = cbEstadoCivil.Text
         modeloDeCliente.SetGenero = cbGenero.Text
+        modeloDeCliente.SetFechaDeRegistro = dtpFechaDeRegistro.Text
 
         Dim validator As ValidationClientSchema = New ValidationClientSchema()
         Dim result As ValidationResult = validator.Validate(modeloDeCliente)
 
         If result.IsValid Then
-            ListadorDeClientes.dgListaDeUsuarios.Columns.Add("Codigo", Guid.NewGuid().ToString())
-            ListadorDeClientes.dgListaDeUsuarios.Columns.Add("Nombre", txtNombre.Text)
-            ListadorDeClientes.dgListaDeUsuarios.Columns.Add("Apellido", txtApellido.Text)
-            ListadorDeClientes.dgListaDeUsuarios.Columns.Add("Email", txtEmail.Text)
-            ListadorDeClientes.dgListaDeUsuarios.Columns.Add("Numero", txtTelefono.Text)
-            ListadorDeClientes.dgListaDeUsuarios.Columns.Add("Direccion", txtDireccion.Text)
-            ListadorDeClientes.dgListaDeUsuarios.Columns.Add("FechaNacimiento", dtpFechaDeNacimiento.Text)
-            ListadorDeClientes.dgListaDeUsuarios.Columns.Add("Genero", cbGenero.Text)
-            ListadorDeClientes.dgListaDeUsuarios.Columns.Add("EstadoCivil", cbEstadoCivil.Text)
+            Try
+                Dim interactuarConBaseDeDatos As New DbClientContextSchema()
+                interactuarConBaseDeDatos.CrearCliente(
+                    Code:=Guid.NewGuid().ToString(),
+                    nombre:=txtNombre.Text,
+                    apellido:=txtApellido.Text,
+                    email:=txtEmail.Text,
+                    telefono:=txtTelefono.Text,
+                    direccion:=txtDireccion.Text,
+                    fechaNacimiento:=dtpFechaDeNacimiento.Text,
+                    genero:=cbGenero.Text,
+                    estadoCivil:=cbEstadoCivil.Text,
+                    fechaRegistro:=dtpFechaDeRegistro.Text
+                )
+            Catch ex As Exception
+                MessageBox.Show(ex.Message)
+            End Try
+
             Me.Hide()
         Else
             For Each [err] As ValidationFailure In result.Errors

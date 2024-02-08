@@ -5,7 +5,7 @@ Public Class ValidationClientSchema
         Return $"Error en el campo {errorDeCampo}: {complementoMensaje}"
     End Function
 
-    Private NoSQL As String = "^\s+([a-z]|[A-Z])\s+$"
+    Private NoSQL As String = "^\([a-z]|[A-Z])\+$"
     Private SoloNumeros As String = "^\d+$"
 
     Public Sub New()

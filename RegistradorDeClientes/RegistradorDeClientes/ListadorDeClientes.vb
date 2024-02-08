@@ -2,7 +2,24 @@
     Private xOffset As Integer
     Private yOffset As Integer
     Private Sub ListadorDeClientes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim ObtenerClientes As New DbClientContextSchema()
+        Dim data = ObtenerClientes.ObtenerTodosLosClientes()
 
+
+        dgListaDeUsuarios.DataSource = data
+        dgListaDeUsuarios.Columns("Id").Visible = False
+        dgListaDeUsuarios.Columns("CreadoEn").Visible = False
+        dgListaDeUsuarios.Columns("ActualizadoEn").Visible = False
+        'dgListaDeUsuarios.Columns.Add("Codigo", Guid.NewGuid().ToString())
+        'dgListaDeUsuarios.Columns.Add("Nombre", txtNombre.Text)
+        'dgListaDeUsuarios.Columns.Add("Apellido", txtApellido.Text)
+        'dgListaDeUsuarios.Columns.Add("Email", txtEmail.Text)
+        'dgListaDeUsuarios.Columns.Add("Numero", txtTelefono.Text)
+        'dgListaDeUsuarios.Columns.Add("Direccion", txtDireccion.Text)
+        'dgListaDeUsuarios.Columns.Add("FechaNacimiento", dtpFechaDeNacimiento.Text)
+        'dgListaDeUsuarios.Columns.Add("Genero", cbGenero.Text)
+        'dgListaDeUsuarios.Columns.Add("EstadoCivil", cbEstadoCivil.Text)
+        'dgListaDeUsuarios.Columns.Add("FechaNacimiento", dtpFechaDeRegistro.Text)
     End Sub
     Private Sub ListadorDeClientes_MouseDown(sender As Object, e As MouseEventArgs) Handles MyBase.MouseDown
         If e.Button = MouseButtons.Left Then
@@ -21,6 +38,7 @@
     Private Sub btnAgregarCliente_Click(sender As Object, e As EventArgs) Handles btnAgregarCliente.Click
         Dim formCreateClient As New CreateClient()
         formCreateClient.Show()
+        Me.Hide()
     End Sub
 
     Private Sub btnCerrar_Click(sender As Object, e As EventArgs) Handles btnCerrar.Click
@@ -37,5 +55,9 @@
 
     Private Sub btnMinimizar_Click(sender As Object, e As EventArgs) Handles btnMinimizar.Click
         Me.WindowState = FormWindowState.Minimized
+    End Sub
+
+    Private Sub dgListaDeUsuarios_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgListaDeUsuarios.CellContentClick
+
     End Sub
 End Class

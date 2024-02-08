@@ -9,8 +9,7 @@
     Public fechaNacimiento As String
     Public genero As String
     Public estadoCivil As String
-    Public fechaCreacion As String
-    Public fechaActualizacion As String
+    Public fechaRegistro As String
     Public ReadOnly Property GetNombre As String
         Get
             Return nombre
@@ -56,6 +55,12 @@
         End Get
     End Property
 
+    Public ReadOnly Property GetFechaDeRegistro As String
+        Get
+            Return fechaRegistro
+        End Get
+    End Property
+
 
     Public WriteOnly Property SetEmail As String
         Set(value As String)
@@ -97,6 +102,12 @@
     Public WriteOnly Property SetFechaDeNacimiento As String
         Set(value As String)
             fechaNacimiento = value
+        End Set
+    End Property
+
+    Public WriteOnly Property SetFechaDeRegistro As String
+        Set(value As String)
+            fechaRegistro = value
         End Set
     End Property
 
