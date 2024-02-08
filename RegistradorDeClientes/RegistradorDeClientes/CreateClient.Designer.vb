@@ -52,6 +52,7 @@ Partial Class CreateClient
         Me.Panel5 = New System.Windows.Forms.Panel()
         Me.dtpFechaDeRegistro = New System.Windows.Forms.DateTimePicker()
         Me.dtpFechaDeNacimiento = New System.Windows.Forms.DateTimePicker()
+        Me.btnRegresar = New System.Windows.Forms.Button()
         CType(Me.pbVisualizador, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
@@ -348,6 +349,18 @@ Partial Class CreateClient
         Me.dtpFechaDeNacimiento.TabIndex = 29
         Me.dtpFechaDeNacimiento.UseWaitCursor = True
         '
+        'btnRegresar
+        '
+        Me.btnRegresar.BackColor = System.Drawing.Color.Transparent
+        Me.btnRegresar.BackgroundImage = CType(resources.GetObject("btnRegresar.BackgroundImage"), System.Drawing.Image)
+        Me.btnRegresar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnRegresar.Font = New System.Drawing.Font("JetBrains Mono NL", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnRegresar.Location = New System.Drawing.Point(25, 451)
+        Me.btnRegresar.Name = "btnRegresar"
+        Me.btnRegresar.Size = New System.Drawing.Size(36, 34)
+        Me.btnRegresar.TabIndex = 30
+        Me.btnRegresar.UseVisualStyleBackColor = False
+        '
         'CreateClient
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -355,6 +368,7 @@ Partial Class CreateClient
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(872, 512)
+        Me.Controls.Add(Me.btnRegresar)
         Me.Controls.Add(Me.dtpFechaDeNacimiento)
         Me.Controls.Add(Me.Panel5)
         Me.Controls.Add(Me.dtpFechaDeRegistro)
@@ -415,4 +429,5 @@ Partial Class CreateClient
     Friend WithEvents Panel5 As Panel
     Friend WithEvents dtpFechaDeRegistro As DateTimePicker
     Friend WithEvents dtpFechaDeNacimiento As DateTimePicker
+    Friend WithEvents btnRegresar As Button
 End Class

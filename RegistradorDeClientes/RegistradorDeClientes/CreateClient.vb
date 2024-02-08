@@ -181,4 +181,9 @@ Public Class CreateClient
             txtDireccion.Text = ""
         End If
     End Sub
+
+    Private Sub btnRegresar_Click(sender As Object, e As EventArgs) Handles btnRegresar.Click
+        ListadorDeClientes.Show()
+        Me.Hide()
+    End Sub
 End Class

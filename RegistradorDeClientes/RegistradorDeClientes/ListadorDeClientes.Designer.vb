@@ -26,9 +26,10 @@ Partial Class ListadorDeClientes
         Me.btnAgregarCliente = New System.Windows.Forms.Button()
         Me.btnCerrar = New System.Windows.Forms.Button()
         Me.dgListaDeUsuarios = New System.Windows.Forms.DataGridView()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.txtBuscar = New System.Windows.Forms.TextBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.pnlBuscar = New System.Windows.Forms.Panel()
+        Me.cbFiltrador = New System.Windows.Forms.ComboBox()
         Me.btnMinimizar = New System.Windows.Forms.Button()
         Me.btnExpandir = New System.Windows.Forms.Button()
         CType(Me.dgListaDeUsuarios, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -41,7 +42,7 @@ Partial Class ListadorDeClientes
         Me.btnAgregarCliente.BackgroundImage = CType(resources.GetObject("btnAgregarCliente.BackgroundImage"), System.Drawing.Image)
         Me.btnAgregarCliente.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btnAgregarCliente.Font = New System.Drawing.Font("JetBrains Mono NL", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAgregarCliente.Location = New System.Drawing.Point(561, 11)
+        Me.btnAgregarCliente.Location = New System.Drawing.Point(665, 11)
         Me.btnAgregarCliente.Name = "btnAgregarCliente"
         Me.btnAgregarCliente.Size = New System.Drawing.Size(33, 29)
         Me.btnAgregarCliente.TabIndex = 0
@@ -62,26 +63,31 @@ Partial Class ListadorDeClientes
         'dgListaDeUsuarios
         '
         Me.dgListaDeUsuarios.BackgroundColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.dgListaDeUsuarios.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgListaDeUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgListaDeUsuarios.Location = New System.Drawing.Point(46, 70)
         Me.dgListaDeUsuarios.Name = "dgListaDeUsuarios"
         Me.dgListaDeUsuarios.Size = New System.Drawing.Size(827, 418)
         Me.dgListaDeUsuarios.TabIndex = 2
         '
-        'TextBox1
+        'txtBuscar
         '
-        Me.TextBox1.BackColor = System.Drawing.Color.Gray
-        Me.TextBox1.Font = New System.Drawing.Font("Segoe UI", 8.25!)
-        Me.TextBox1.Location = New System.Drawing.Point(46, 12)
-        Me.TextBox1.Multiline = True
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(477, 28)
-        Me.TextBox1.TabIndex = 3
+        Me.txtBuscar.BackColor = System.Drawing.Color.RoyalBlue
+        Me.txtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txtBuscar.Font = New System.Drawing.Font("Segoe UI", 8.25!)
+        Me.txtBuscar.ForeColor = System.Drawing.Color.White
+        Me.txtBuscar.Location = New System.Drawing.Point(10, 10)
+        Me.txtBuscar.Multiline = True
+        Me.txtBuscar.Name = "txtBuscar"
+        Me.txtBuscar.Size = New System.Drawing.Size(477, 28)
+        Me.txtBuscar.TabIndex = 3
         '
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.Black
         Me.Panel1.Controls.Add(Me.pnlBuscar)
+        Me.Panel1.Controls.Add(Me.txtBuscar)
+        Me.Panel1.Controls.Add(Me.cbFiltrador)
         Me.Panel1.Controls.Add(Me.btnMinimizar)
         Me.Panel1.Controls.Add(Me.btnExpandir)
         Me.Panel1.Controls.Add(Me.btnAgregarCliente)
@@ -100,6 +106,16 @@ Partial Class ListadorDeClientes
         Me.pnlBuscar.Name = "pnlBuscar"
         Me.pnlBuscar.Size = New System.Drawing.Size(31, 29)
         Me.pnlBuscar.TabIndex = 8
+        '
+        'cbFiltrador
+        '
+        Me.cbFiltrador.FormattingEnabled = True
+        Me.cbFiltrador.Items.AddRange(New Object() {"Nombre ", "Email", "Telefono", "Apellido", "EstadoCivil"})
+        Me.cbFiltrador.Location = New System.Drawing.Point(537, 15)
+        Me.cbFiltrador.Name = "cbFiltrador"
+        Me.cbFiltrador.Size = New System.Drawing.Size(85, 21)
+        Me.cbFiltrador.TabIndex = 9
+        Me.cbFiltrador.Tag = ""
         '
         'btnMinimizar
         '
@@ -132,7 +148,6 @@ Partial Class ListadorDeClientes
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(917, 534)
-        Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.dgListaDeUsuarios)
         Me.Controls.Add(Me.Panel1)
         Me.DoubleBuffered = True
@@ -143,16 +158,16 @@ Partial Class ListadorDeClientes
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
 
     Friend WithEvents btnAgregarCliente As Button
     Friend WithEvents btnCerrar As Button
     Friend WithEvents dgListaDeUsuarios As DataGridView
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents txtBuscar As TextBox
     Friend WithEvents Panel1 As Panel
     Friend WithEvents btnExpandir As Button
     Friend WithEvents btnMinimizar As Button
     Friend WithEvents pnlBuscar As Panel
+    Friend WithEvents cbFiltrador As ComboBox
 End Class

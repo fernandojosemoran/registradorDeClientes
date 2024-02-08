@@ -1,7 +1,10 @@
-﻿Public Class ListadorDeClientes
+﻿Imports System.Windows.Forms.VisualStyles.VisualStyleElement
+
+Public Class ListadorDeClientes
     Private xOffset As Integer
     Private yOffset As Integer
     Private Sub ListadorDeClientes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        cbFiltrador.Text = "Filtro"
         Dim ObtenerClientes As New DbClientContextSchema()
         Dim data = ObtenerClientes.ObtenerTodosLosClientes()
 
@@ -57,7 +60,33 @@
         Me.WindowState = FormWindowState.Minimized
     End Sub
 
-    Private Sub dgListaDeUsuarios_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgListaDeUsuarios.CellContentClick
+    Private Sub Text_buscarChanged(sender As Object, e As EventArgs) Handles txtBuscar.TextChanged
+        Dim conexion As New DbClientContextSchema()
+        Dim todosLosDatos As DataTable = conexion.ObtenerTodosLosClientes()
+
+        If txtBuscar.Text = "" Then
+            dgListaDeUsuarios.DataSource = todosLosDatos
+            dgListaDeUsuarios.Columns("Id").Visible = False
+            dgListaDeUsuarios.Columns("CreadoEn").Visible = False
+            dgListaDeUsuarios.Columns("ActualizadoEn").Visible = False
+        Else
+            Dim filtro As String = cbFiltrador.Text
+
+            If filtro <> "Nombre" And filtro <> "Apellido" And filtro <> "Email" And filtro <> "Telefono" And filtro <> "EstadoCivil" Then
+                filtro = "Nombre"
+            End If
+
+            Dim data As DataTable = conexion.EncontrarUnCliente(
+                txtBuscar.Text,
+                filtro
+            )
+
+            'dgListaDeUsuarios.Rows.Clear()
+            dgListaDeUsuarios.DataSource = data
+            dgListaDeUsuarios.Columns("Id").Visible = False
+            dgListaDeUsuarios.Columns("CreadoEn").Visible = False
+            dgListaDeUsuarios.Columns("ActualizadoEn").Visible = False
+        End If
 
     End Sub
 End Class

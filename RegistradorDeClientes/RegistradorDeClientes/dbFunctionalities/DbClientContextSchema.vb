@@ -1,8 +1,9 @@
 ﻿Imports System.Data.SqlClient
+Imports System.Globalization
 
 Public Class DbClientContextSchema
 
-    Public Function CrearCliente(
+    Public Sub CrearCliente(
         Code As String,
         nombre As String,
         apellido As String,
@@ -55,16 +56,15 @@ Public Class DbClientContextSchema
             comando.Parameters.AddWithValue("@FechaRegistro", fechaRegistro)
 
             comando.ExecuteNonQuery()
-            Return comando
 
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         Finally
             conexionConSQL.Close()
         End Try
-    End Function
+    End Sub
 
-    Public Function EliminarCliente(email As String)
+    Public Sub EliminarCliente(email As String)
 
         Dim conexionConSQL As New SqlConnection(Environment.GetEnvironmentVariable("DB_STORE_EXPRESS"))
         Dim consulta As String = $"DELETE FROM {Environment.GetEnvironmentVariable("DB_TABLE_STORE_EXPRESS")} WHERE Email=@email"
@@ -74,13 +74,12 @@ Public Class DbClientContextSchema
             Dim comando As New SqlCommand(consulta, conexionConSQL)
             comando.Parameters.AddWithValue("@email", email)
             comando.ExecuteNonQuery()
-            Return comando
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         Finally
             conexionConSQL.Close()
         End Try
-    End Function
+    End Sub
 
     Public Function ObtenerTodosLosClientes() As DataTable
         Dim conexionConSQL As New SqlConnection(Environment.GetEnvironmentVariable("DB_STORE_EXPRESS"))
@@ -104,22 +103,31 @@ Public Class DbClientContextSchema
     End Function
 
 
-    Public Function EncontrarUnCliente(email As String)
+    Public Function EncontrarUnCliente(texto As String, filtro As String) As DataTable
+        Dim filtroCapitalizado As String = Char.ToUpper(filtro(0)) & filtro.Substring(1)
+
+        Dim dataTable As New DataTable()
+
         Dim conexionConSQL As New SqlConnection(Environment.GetEnvironmentVariable("DB_STORE_EXPRESS"))
-        Dim consulta As String = $"SELECT Email FROM {Environment.GetEnvironmentVariable("DB_TABLE_STORE_EXPRESS")} WHERE Email=@email"
+        Dim consulta As String = $"SELECT * FROM {Environment.GetEnvironmentVariable("DB_TABLE_STORE_EXPRESS")} WHERE {filtroCapitalizado} LIKE '%' + @{filtro} + '%' ORDER BY {filtroCapitalizado}"
+
+
         Try
             conexionConSQL.Open()
             Dim comando As New SqlCommand(consulta, conexionConSQL)
-            comando.Parameters.AddWithValue("@email", email)
-            comando.ExecuteScalar()
-
-            Return comando
+            comando.Parameters.AddWithValue($"@{filtro}", texto)
+            Dim dataReader As SqlDataReader = comando.ExecuteReader()
+            dataTable.Load(dataReader)
+            dataReader.Close()
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         Finally
             conexionConSQL.Close()
         End Try
+
+        Return dataTable
     End Function
+
 
     'Public Function ActualizarUnCliente(fileds As String, connectionSQL As SqlConnection)
     '    Dim cmd As New SqlCommand($"UPDATE Cliente SET  {fileds} WHERE Email='{email}'", connectionSQL)
