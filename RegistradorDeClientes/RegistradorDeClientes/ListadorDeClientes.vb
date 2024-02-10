@@ -5,7 +5,7 @@ Public Class ListadorDeClientes
     Private yOffset As Integer
     Private Sub ListadorDeClientes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         cbFiltrador.Text = "Filtro"
-        Dim ObtenerClientes As New DbClientContextSchema()
+        Dim ObtenerClientes As New DbClienteFuncionalidades()
         Dim data = ObtenerClientes.ObtenerTodosLosClientes()
 
 
@@ -61,10 +61,11 @@ Public Class ListadorDeClientes
     End Sub
 
     Private Sub Text_buscarChanged(sender As Object, e As EventArgs) Handles txtBuscar.TextChanged
-        Dim conexion As New DbClientContextSchema()
+        Dim conexion As New DbClienteFuncionalidades()
         Dim todosLosDatos As DataTable = conexion.ObtenerTodosLosClientes()
 
         If txtBuscar.Text = "" Then
+            cbFiltrador.Text = "Filtro"
             dgListaDeUsuarios.DataSource = todosLosDatos
             dgListaDeUsuarios.Columns("Id").Visible = False
             dgListaDeUsuarios.Columns("CreadoEn").Visible = False

@@ -91,12 +91,12 @@ Public Class CreateClient
         modeloDeCliente.SetGenero = cbGenero.Text
         modeloDeCliente.SetFechaDeRegistro = dtpFechaDeRegistro.Text
 
-        Dim validator As ValidationClientSchema = New ValidationClientSchema()
-        Dim result As ValidationResult = validator.Validate(modeloDeCliente)
+        Dim validador As ValidationClientSchema = New ValidationClientSchema()
+        Dim result As ValidationResult = validador.Validate(modeloDeCliente)
 
         If result.IsValid Then
             Try
-                Dim interactuarConBaseDeDatos As New DbClientContextSchema()
+                Dim interactuarConBaseDeDatos As New DbClienteFuncionalidades()
                 interactuarConBaseDeDatos.CrearCliente(
                     Code:=Guid.NewGuid().ToString(),
                     nombre:=txtNombre.Text,

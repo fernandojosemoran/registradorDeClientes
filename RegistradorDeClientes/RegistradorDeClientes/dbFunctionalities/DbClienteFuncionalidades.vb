@@ -1,7 +1,6 @@
 ﻿Imports System.Data.SqlClient
-Imports System.Globalization
 
-Public Class DbClientContextSchema
+Public Class DbClienteFuncionalidades
 
     Public Sub CrearCliente(
         Code As String,
@@ -109,7 +108,7 @@ Public Class DbClientContextSchema
         Dim dataTable As New DataTable()
 
         Dim conexionConSQL As New SqlConnection(Environment.GetEnvironmentVariable("DB_STORE_EXPRESS"))
-        Dim consulta As String = $"SELECT * FROM {Environment.GetEnvironmentVariable("DB_TABLE_STORE_EXPRESS")} WHERE {filtroCapitalizado} LIKE '%' + @{filtro} + '%' ORDER BY {filtroCapitalizado}"
+        Dim consulta As String = $"SELECT * FROM {Environment.GetEnvironmentVariable("DB_TABLE_STORE_EXPRESS")} WHERE {filtroCapitalizado} LIKE @{filtro} + '%' ORDER BY {filtroCapitalizado}"
 
 
         Try

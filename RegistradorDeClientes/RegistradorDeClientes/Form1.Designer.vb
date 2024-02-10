@@ -24,6 +24,8 @@ Partial Class Form1
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         Me.pnlCamposDeAutenticacion = New System.Windows.Forms.Panel()
+        Me.Panel4 = New System.Windows.Forms.Panel()
+        Me.txtEmail = New System.Windows.Forms.TextBox()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.lblNombreDeEmpresa = New System.Windows.Forms.Label()
@@ -37,6 +39,7 @@ Partial Class Form1
         Me.btnMinimizar = New System.Windows.Forms.Button()
         Me.btnExpandir = New System.Windows.Forms.Button()
         Me.btnCerrar = New System.Windows.Forms.Button()
+        Me.lblAlerta = New System.Windows.Forms.Label()
         Me.pnlCamposDeAutenticacion.SuspendLayout()
         Me.Panel3.SuspendLayout()
         Me.SuspendLayout()
@@ -44,6 +47,8 @@ Partial Class Form1
         'pnlCamposDeAutenticacion
         '
         Me.pnlCamposDeAutenticacion.BackColor = System.Drawing.Color.Black
+        Me.pnlCamposDeAutenticacion.Controls.Add(Me.Panel4)
+        Me.pnlCamposDeAutenticacion.Controls.Add(Me.txtEmail)
         Me.pnlCamposDeAutenticacion.Controls.Add(Me.Panel2)
         Me.pnlCamposDeAutenticacion.Controls.Add(Me.Panel1)
         Me.pnlCamposDeAutenticacion.Controls.Add(Me.lblNombreDeEmpresa)
@@ -54,6 +59,25 @@ Partial Class Form1
         Me.pnlCamposDeAutenticacion.Name = "pnlCamposDeAutenticacion"
         Me.pnlCamposDeAutenticacion.Size = New System.Drawing.Size(456, 309)
         Me.pnlCamposDeAutenticacion.TabIndex = 0
+        '
+        'Panel4
+        '
+        Me.Panel4.BackColor = System.Drawing.Color.White
+        Me.Panel4.BackgroundImage = CType(resources.GetObject("Panel4.BackgroundImage"), System.Drawing.Image)
+        Me.Panel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.Panel4.Location = New System.Drawing.Point(90, 116)
+        Me.Panel4.Name = "Panel4"
+        Me.Panel4.Size = New System.Drawing.Size(24, 20)
+        Me.Panel4.TabIndex = 7
+        '
+        'txtEmail
+        '
+        Me.txtEmail.Font = New System.Drawing.Font("Segoe UI", 8.25!)
+        Me.txtEmail.Location = New System.Drawing.Point(110, 116)
+        Me.txtEmail.Name = "txtEmail"
+        Me.txtEmail.Size = New System.Drawing.Size(234, 22)
+        Me.txtEmail.TabIndex = 6
+        Me.txtEmail.Text = "Email"
         '
         'Panel2
         '
@@ -200,6 +224,14 @@ Partial Class Form1
         Me.btnCerrar.TabIndex = 1
         Me.btnCerrar.UseVisualStyleBackColor = False
         '
+        'lblAlerta
+        '
+        Me.lblAlerta.Location = New System.Drawing.Point(170, 410)
+        Me.lblAlerta.Name = "lblAlerta"
+        Me.lblAlerta.Size = New System.Drawing.Size(456, 18)
+        Me.lblAlerta.TabIndex = 8
+        Me.lblAlerta.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -207,6 +239,7 @@ Partial Class Form1
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(806, 455)
+        Me.Controls.Add(Me.lblAlerta)
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.pnlCamposDeAutenticacion)
         Me.DoubleBuffered = True
@@ -235,4 +268,7 @@ Partial Class Form1
     Friend WithEvents btnMinimizar As Button
     Friend WithEvents btnExpandir As Button
     Friend WithEvents btnCerrar As Button
+    Friend WithEvents Panel4 As Panel
+    Friend WithEvents txtEmail As TextBox
+    Friend WithEvents lblAlerta As Label
 End Class
