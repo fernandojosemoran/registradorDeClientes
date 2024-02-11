@@ -29,7 +29,7 @@ Partial Class Form1
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.lblNombreDeEmpresa = New System.Windows.Forms.Label()
-        Me.txtAceptar = New System.Windows.Forms.Button()
+        Me.btnAceptar = New System.Windows.Forms.Button()
         Me.txtPassword = New System.Windows.Forms.TextBox()
         Me.txtUsuario = New System.Windows.Forms.TextBox()
         Me.Panel3 = New System.Windows.Forms.Panel()
@@ -52,7 +52,7 @@ Partial Class Form1
         Me.pnlCamposDeAutenticacion.Controls.Add(Me.Panel2)
         Me.pnlCamposDeAutenticacion.Controls.Add(Me.Panel1)
         Me.pnlCamposDeAutenticacion.Controls.Add(Me.lblNombreDeEmpresa)
-        Me.pnlCamposDeAutenticacion.Controls.Add(Me.txtAceptar)
+        Me.pnlCamposDeAutenticacion.Controls.Add(Me.btnAceptar)
         Me.pnlCamposDeAutenticacion.Controls.Add(Me.txtPassword)
         Me.pnlCamposDeAutenticacion.Controls.Add(Me.txtUsuario)
         Me.pnlCamposDeAutenticacion.Location = New System.Drawing.Point(170, 73)
@@ -110,15 +110,15 @@ Partial Class Form1
         Me.lblNombreDeEmpresa.Text = "Store Express"
         Me.lblNombreDeEmpresa.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'txtAceptar
+        'btnAceptar
         '
-        Me.txtAceptar.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtAceptar.Location = New System.Drawing.Point(185, 209)
-        Me.txtAceptar.Name = "txtAceptar"
-        Me.txtAceptar.Size = New System.Drawing.Size(75, 23)
-        Me.txtAceptar.TabIndex = 0
-        Me.txtAceptar.Text = "Aceptar"
-        Me.txtAceptar.UseVisualStyleBackColor = True
+        Me.btnAceptar.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAceptar.Location = New System.Drawing.Point(185, 209)
+        Me.btnAceptar.Name = "btnAceptar"
+        Me.btnAceptar.Size = New System.Drawing.Size(75, 23)
+        Me.btnAceptar.TabIndex = 0
+        Me.btnAceptar.Text = "Aceptar"
+        Me.btnAceptar.UseVisualStyleBackColor = True
         '
         'txtPassword
         '
@@ -258,7 +258,7 @@ Partial Class Form1
     Friend WithEvents lblNombreDeEmpresa As Label
     Friend WithEvents txtPassword As TextBox
     Friend WithEvents txtUsuario As TextBox
-    Friend WithEvents txtAceptar As Button
+    Friend WithEvents btnAceptar As Button
     Friend WithEvents Panel2 As Panel
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Panel3 As Panel

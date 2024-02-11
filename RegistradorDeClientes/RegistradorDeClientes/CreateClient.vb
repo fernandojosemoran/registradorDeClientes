@@ -6,6 +6,19 @@ Public Class CreateClient
     Private xOffset As Integer
     Private yOffset As Integer
     Private Sub CreateClient_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim consejo As New ToolTip()
+
+        consejo.SetToolTip(btnListo, "Aceptar")
+        consejo.SetToolTip(btnRegresar, "Regresar a tabla de registro")
+        consejo.SetToolTip(txtApellido, "Ingrse su apellido")
+        consejo.SetToolTip(txtDireccion, "Ingrese su direccion, haga uso de lo siguiente: ciudad,barrio,aldea,pueblo,pais")
+        consejo.SetToolTip(txtEmail, "Ingrese un correo electronico")
+        consejo.SetToolTip(txtTelefono, "Ingrese un numero de telefono")
+        consejo.SetToolTip(cbEstadoCivil, "Seleccione un estado civil")
+        consejo.SetToolTip(cbGenero, "Seleccione un genero")
+        consejo.SetToolTip(dtpFechaDeNacimiento, "Seleccione su fecha de nacimiento")
+        consejo.SetToolTip(dtpFechaDeRegistro, "Seleccione fecha de creacion")
+
         'Me.cbEstadoCivil = New System.Windows.Forms.ComboBox()
         'Dim cbEstadoCivilItems As String() = {
         '    "Soltero",
@@ -109,11 +122,12 @@ Public Class CreateClient
                     estadoCivil:=cbEstadoCivil.Text,
                     fechaRegistro:=dtpFechaDeRegistro.Text
                 )
+
+                ListadorDeClientes.Show()
+                Me.Hide()
             Catch ex As Exception
                 MessageBox.Show(ex.Message)
             End Try
-
-            Me.Hide()
         Else
             For Each [err] As ValidationFailure In result.Errors
                 ' Acciones que deseas realizar con cada error, por ejemplo:

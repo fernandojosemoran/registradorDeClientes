@@ -11,7 +11,14 @@ Public Class Form1
 
     ''
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+        Dim consejo As New ToolTip()
+        consejo.SetToolTip(btnCerrar, "Cerrar Ventana Emergente")
+        consejo.SetToolTip(btnExpandir, "Expandir Ventana Emergente")
+        consejo.SetToolTip(btnMinimizar, "Minimizar Ventana Emergente")
+        consejo.SetToolTip(btnAceptar, "Verificar Autenticacion")
+        consejo.SetToolTip(txtEmail, "Ingresa un correo Electronico")
+        consejo.SetToolTip(txtPassword, "Ingresa una contrasena")
+        consejo.SetToolTip(txtUsuario, "Ingresa un nombre de usuario")
     End Sub
 
     Private Sub Form1_MouseDown(sender As Object, e As MouseEventArgs) Handles MyBase.MouseDown
@@ -33,7 +40,7 @@ Public Class Form1
         End If
     End Sub
 
-    Private Sub txtAceptar_Click(sender As Object, e As EventArgs) Handles txtAceptar.Click
+    Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnAceptar.Click
         'Intanciamos el formulario que mostrara los clientes registrados existentes'
         Dim formListarClientes As New ListadorDeClientes()
         'Instanciamos el objecto que contiene las funcionalidades que interactuan con las base de datos'

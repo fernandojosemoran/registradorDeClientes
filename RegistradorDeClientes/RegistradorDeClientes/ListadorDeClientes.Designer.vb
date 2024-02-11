@@ -22,16 +22,19 @@ Partial Class ListadorDeClientes
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ListadorDeClientes))
         Me.btnAgregarCliente = New System.Windows.Forms.Button()
         Me.btnCerrar = New System.Windows.Forms.Button()
         Me.dgListaDeUsuarios = New System.Windows.Forms.DataGridView()
         Me.txtBuscar = New System.Windows.Forms.TextBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.cbxSeleccionar = New System.Windows.Forms.CheckBox()
         Me.pnlBuscar = New System.Windows.Forms.Panel()
         Me.cbFiltrador = New System.Windows.Forms.ComboBox()
         Me.btnMinimizar = New System.Windows.Forms.Button()
         Me.btnExpandir = New System.Windows.Forms.Button()
+        Me.toolTip = New System.Windows.Forms.ToolTip(Me.components)
         CType(Me.dgListaDeUsuarios, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
@@ -85,6 +88,7 @@ Partial Class ListadorDeClientes
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.Black
+        Me.Panel1.Controls.Add(Me.cbxSeleccionar)
         Me.Panel1.Controls.Add(Me.pnlBuscar)
         Me.Panel1.Controls.Add(Me.txtBuscar)
         Me.Panel1.Controls.Add(Me.cbFiltrador)
@@ -96,6 +100,15 @@ Partial Class ListadorDeClientes
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(848, 50)
         Me.Panel1.TabIndex = 5
+        '
+        'cbxSeleccionar
+        '
+        Me.cbxSeleccionar.Location = New System.Drawing.Point(628, 14)
+        Me.cbxSeleccionar.Name = "cbxSeleccionar"
+        Me.cbxSeleccionar.Size = New System.Drawing.Size(13, 22)
+        Me.cbxSeleccionar.TabIndex = 10
+        Me.cbxSeleccionar.Text = "CheckBox1"
+        Me.cbxSeleccionar.UseVisualStyleBackColor = True
         '
         'pnlBuscar
         '
@@ -170,4 +183,6 @@ Partial Class ListadorDeClientes
     Friend WithEvents btnMinimizar As Button
     Friend WithEvents pnlBuscar As Panel
     Friend WithEvents cbFiltrador As ComboBox
+    Friend WithEvents cbxSeleccionar As CheckBox
+    Friend WithEvents toolTip As ToolTip
 End Class
