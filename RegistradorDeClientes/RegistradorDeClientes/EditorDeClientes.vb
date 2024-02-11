@@ -1,55 +1,8 @@
-﻿
-Imports FluentValidation.Results
+﻿Imports FluentValidation.Results
 
-Public Class CreateClient
+Public Class EditorDeClientes
     Private xOffset As Integer
     Private yOffset As Integer
-    Private Sub CreateClient_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim consejo As New ToolTip()
-
-        consejo.SetToolTip(btnListo, "Aceptar")
-        consejo.SetToolTip(btnRegresar, "Regresar a tabla de registro")
-        consejo.SetToolTip(txtApellido, "Ingrse su apellido")
-        consejo.SetToolTip(txtDireccion, "Ingrese su direccion, haga uso de lo siguiente: ciudad,barrio,aldea,pueblo,pais")
-        consejo.SetToolTip(txtEmail, "Ingrese un correo electronico")
-        consejo.SetToolTip(txtTelefono, "Ingrese un numero de telefono")
-        consejo.SetToolTip(cbEstadoCivil, "Seleccione un estado civil")
-        consejo.SetToolTip(cbGenero, "Seleccione un genero")
-        consejo.SetToolTip(dtpFechaDeNacimiento, "Seleccione su fecha de nacimiento")
-
-        'Me.cbEstadoCivil = New System.Windows.Forms.ComboBox()
-        'Dim cbEstadoCivilItems As String() = {
-        '    "Soltero",
-        '    "Casado"
-        '}
-
-        'cbEstadoCivil.Items.Add(cbEstadoCivilItems)
-
-        'Me.cbEstadoCivil.Location = New System.Drawing.Point(628, 264)
-        'Me.cbEstadoCivil.IntegralHeight = False
-        'Me.cbEstadoCivil.MaxDropDownItems = 5
-        'Me.cbEstadoCivil.DropDownStyle = ComboBoxStyle.DropDownList
-        'Me.cbEstadoCivil.Name = "cbEstadoCivil"
-        'Me.cbEstadoCivil.Size = New System.Drawing.Size(173, 24)
-        'Me.cbEstadoCivil.TabIndex = 0
-        'Me.Controls.Add(Me.cbEstadoCivil)
-    End Sub
-
-    Private Sub CreateClient_MouseDown(sender As Object, e As MouseEventArgs) Handles MyBase.MouseDown
-        If e.Button = MouseButtons.Left Then
-            ' Almacenar la posición del mouse al hacer clic en la ventana
-            xOffset = e.X
-            yOffset = e.Y
-        End If
-    End Sub
-
-    Private Sub CreateClient_MouseMove(sender As Object, e As MouseEventArgs) Handles MyBase.MouseMove
-        If e.Button = MouseButtons.Left Then
-            ' Mover la ventana según la posición del mouse actual y la posición donde se hizo clic inicialmente
-            Me.Location = New Point(Me.Left + e.X - xOffset, Me.Top + e.Y - yOffset)
-        End If
-    End Sub
-
     Private Sub btnCerrar_Click(sender As Object, e As EventArgs) Handles btnCerrarVentana.Click
         Application.Exit()
     End Sub
@@ -62,7 +15,7 @@ Public Class CreateClient
         End If
     End Sub
 
-    Private Sub btnMinimizarVentana_Click(sender As Object, e As EventArgs) Handles btnMinimizarVentana.Click
+    Private Sub btnMinimizar_Click(sender As Object, e As EventArgs) Handles btnMinimizarVentana.Click
         Me.WindowState = FormWindowState.Minimized
     End Sub
 
@@ -100,7 +53,6 @@ Public Class CreateClient
         modeloDeCliente.SetDireccion = verificarRelleno(txtDireccion.Text, "Direccion")
         modeloDeCliente.SetEstadoCivil = cbEstadoCivil.Text
         modeloDeCliente.SetGenero = cbGenero.Text
-        modeloDeCliente.SetFechaDeRegistro = DateTime.Now
 
         Dim validador As ValidationClientSchema = New ValidationClientSchema()
         Dim result As ValidationResult = validador.Validate(modeloDeCliente)
@@ -108,8 +60,7 @@ Public Class CreateClient
         If result.IsValid Then
             Try
                 Dim interactuarConBaseDeDatos As New DbClienteFuncionalidades()
-                interactuarConBaseDeDatos.CrearCliente(
-                    Code:=Guid.NewGuid().ToString(),
+                interactuarConBaseDeDatos.ActualizarUnCliente(
                     nombre:=txtNombre.Text,
                     apellido:=txtApellido.Text,
                     email:=txtEmail.Text,
@@ -131,6 +82,40 @@ Public Class CreateClient
                 'Mostramos los errores al usuario
                 lblAlerts.Text = [err].ErrorMessage
             Next
+        End If
+    End Sub
+
+    Private Sub btnRegresar_Click(sender As Object, e As EventArgs) Handles btnRegresar.Click
+        ListadorDeClientes.Show()
+        Me.Hide()
+    End Sub
+
+    Private Sub EditorDeClientes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim consejo As New ToolTip()
+
+        consejo.SetToolTip(btnListo, "Aceptar")
+        consejo.SetToolTip(btnRegresar, "Regresar a tabla de registro")
+        consejo.SetToolTip(txtApellido, "Ingrse su apellido")
+        consejo.SetToolTip(txtDireccion, "Ingrese su direccion, haga uso de lo siguiente: ciudad,barrio,aldea,pueblo,pais")
+        consejo.SetToolTip(txtEmail, "Ingrese un correo electronico")
+        consejo.SetToolTip(txtTelefono, "Ingrese un numero de telefono")
+        consejo.SetToolTip(cbEstadoCivil, "Seleccione un estado civil")
+        consejo.SetToolTip(cbGenero, "Seleccione un genero")
+        consejo.SetToolTip(dtpFechaDeNacimiento, "Seleccione su fecha de nacimiento")
+    End Sub
+
+    Private Sub EditorDeClientes_MouseDown(sender As Object, e As MouseEventArgs) Handles MyBase.MouseDown
+        If e.Button = MouseButtons.Left Then
+            ' Almacenar la posición del mouse al hacer clic en la ventana
+            xOffset = e.X
+            yOffset = e.Y
+        End If
+    End Sub
+
+    Private Sub EditorDeClientes_MouseMove(sender As Object, e As MouseEventArgs) Handles MyBase.MouseMove
+        If e.Button = MouseButtons.Left Then
+            ' Mover la ventana según la posición del mouse actual y la posición donde se hizo clic inicialmente
+            Me.Location = New Point(Me.Left + e.X - xOffset, Me.Top + e.Y - yOffset)
         End If
     End Sub
 
@@ -192,11 +177,6 @@ Public Class CreateClient
         If txtDireccion.Text = "Direccion" Then
             txtDireccion.Text = ""
         End If
-    End Sub
-
-    Private Sub btnRegresar_Click(sender As Object, e As EventArgs) Handles btnRegresar.Click
-        ListadorDeClientes.Show()
-        Me.Hide()
     End Sub
 
 End Class

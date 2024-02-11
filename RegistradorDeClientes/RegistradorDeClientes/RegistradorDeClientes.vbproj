@@ -136,6 +136,12 @@
     <Compile Include="CreateClient.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="EditorDeClientes.Designer.vb">
+      <DependentUpon>EditorDeClientes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="EditorDeClientes.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Form1.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -172,6 +178,9 @@
   <ItemGroup>
     <EmbeddedResource Include="CreateClient.resx">
       <DependentUpon>CreateClient.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditorDeClientes.resx">
+      <DependentUpon>EditorDeClientes.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>

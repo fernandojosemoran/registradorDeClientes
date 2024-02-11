@@ -147,9 +147,9 @@ Partial Class Form1
         Me.Panel3.Controls.Add(Me.btnMinimizar)
         Me.Panel3.Controls.Add(Me.btnExpandir)
         Me.Panel3.Controls.Add(Me.btnCerrar)
-        Me.Panel3.Location = New System.Drawing.Point(670, -5)
+        Me.Panel3.Location = New System.Drawing.Point(666, -6)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(136, 51)
+        Me.Panel3.Size = New System.Drawing.Size(128, 50)
         Me.Panel3.TabIndex = 7
         '
         'btnMinimizarVentana
@@ -158,9 +158,9 @@ Partial Class Form1
         Me.btnMinimizarVentana.BackgroundImage = CType(resources.GetObject("btnMinimizarVentana.BackgroundImage"), System.Drawing.Image)
         Me.btnMinimizarVentana.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btnMinimizarVentana.Font = New System.Drawing.Font("JetBrains Mono NL", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnMinimizarVentana.Location = New System.Drawing.Point(13, 11)
+        Me.btnMinimizarVentana.Location = New System.Drawing.Point(25, 15)
         Me.btnMinimizarVentana.Name = "btnMinimizarVentana"
-        Me.btnMinimizarVentana.Size = New System.Drawing.Size(33, 29)
+        Me.btnMinimizarVentana.Size = New System.Drawing.Size(26, 19)
         Me.btnMinimizarVentana.TabIndex = 10
         Me.btnMinimizarVentana.UseVisualStyleBackColor = True
         '
@@ -170,9 +170,9 @@ Partial Class Form1
         Me.btnExpandirVentana.BackgroundImage = CType(resources.GetObject("btnExpandirVentana.BackgroundImage"), System.Drawing.Image)
         Me.btnExpandirVentana.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btnExpandirVentana.Font = New System.Drawing.Font("JetBrains Mono NL", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnExpandirVentana.Location = New System.Drawing.Point(52, 11)
+        Me.btnExpandirVentana.Location = New System.Drawing.Point(57, 15)
         Me.btnExpandirVentana.Name = "btnExpandirVentana"
-        Me.btnExpandirVentana.Size = New System.Drawing.Size(33, 29)
+        Me.btnExpandirVentana.Size = New System.Drawing.Size(23, 19)
         Me.btnExpandirVentana.TabIndex = 9
         Me.btnExpandirVentana.UseVisualStyleBackColor = True
         '
@@ -182,9 +182,9 @@ Partial Class Form1
         Me.btnCerrarVentana.BackgroundImage = CType(resources.GetObject("btnCerrarVentana.BackgroundImage"), System.Drawing.Image)
         Me.btnCerrarVentana.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btnCerrarVentana.Font = New System.Drawing.Font("JetBrains Mono NL", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCerrarVentana.Location = New System.Drawing.Point(91, 11)
+        Me.btnCerrarVentana.Location = New System.Drawing.Point(86, 14)
         Me.btnCerrarVentana.Name = "btnCerrarVentana"
-        Me.btnCerrarVentana.Size = New System.Drawing.Size(33, 29)
+        Me.btnCerrarVentana.Size = New System.Drawing.Size(24, 19)
         Me.btnCerrarVentana.TabIndex = 8
         Me.btnCerrarVentana.UseVisualStyleBackColor = True
         '
@@ -226,9 +226,12 @@ Partial Class Form1
         '
         'lblAlerta
         '
-        Me.lblAlerta.Location = New System.Drawing.Point(170, 410)
+        Me.lblAlerta.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.lblAlerta.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblAlerta.ForeColor = System.Drawing.SystemColors.Control
+        Me.lblAlerta.Location = New System.Drawing.Point(170, 398)
         Me.lblAlerta.Name = "lblAlerta"
-        Me.lblAlerta.Size = New System.Drawing.Size(456, 18)
+        Me.lblAlerta.Size = New System.Drawing.Size(456, 36)
         Me.lblAlerta.TabIndex = 8
         Me.lblAlerta.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '

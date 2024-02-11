@@ -11,7 +11,23 @@ Public Class Form1
 
     ''
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'Declaramos e inicializamos una variable llamda NombreDeProceso que servira para despues buscar un proceso en el sistema con ese nombre'
+        Dim NombreDeProceso As String = "RegistradorDeClientes"
+
+        'Obtenemos un proceso con el nombre  RegistradorDeClientes si es que existe
+        Dim procesos() As Process = Process.GetProcessesByName(NombreDeProceso)
+        'Verificamos si hay procesos'
+        If procesos.Length > 1 Then
+            'Si el proceso está en ejecución, cerrarlo
+            For Each proceso As Process In procesos
+                'Matamos o cerramos el proceso ya existente para que el programa pueda abrirse'
+                proceso.Kill()
+            Next
+        End If
+
+        'Declaramos e inicializamos una variable con una instancia del controlador o elemento ToolTip que sirve para mostrar informacion de los elementos cuando el puntero posa encima de ellos'
         Dim consejo As New ToolTip()
+        'Asignamos los mensajes que queremos que le muestre al usuario cuando el puntero del mouse pose encima de ellos'
         consejo.SetToolTip(btnCerrar, "Cerrar Ventana Emergente")
         consejo.SetToolTip(btnExpandir, "Expandir Ventana Emergente")
         consejo.SetToolTip(btnMinimizar, "Minimizar Ventana Emergente")

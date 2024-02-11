@@ -49,3 +49,4 @@ C:\Users\ferna\OneDrive\Escritorio\registroDeClientes\RegistradorDeClientes\Regi
 C:\Users\ferna\OneDrive\Escritorio\registroDeClientes\RegistradorDeClientes\RegistradorDeClientes\bin\Debug\System.ValueTuple.xml
 C:\Users\ferna\OneDrive\Escritorio\registroDeClientes\RegistradorDeClientes\RegistradorDeClientes\obj\Debug\RegistradorDeClientes.vbproj.SuggestedBindingRedirects.cache
 C:\Users\ferna\OneDrive\Escritorio\registroDeClientes\RegistradorDeClientes\RegistradorDeClientes\obj\Debug\RegistradorDeClientes.exe.config
+C:\Users\ferna\OneDrive\Escritorio\registroDeClientes\RegistradorDeClientes\RegistradorDeClientes\obj\Debug\RegistradorDeClientes.EditorDeClientes.resources

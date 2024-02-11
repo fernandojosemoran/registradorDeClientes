@@ -128,11 +128,54 @@ Public Class DbClienteFuncionalidades
     End Function
 
 
-    'Public Function ActualizarUnCliente(fileds As String, connectionSQL As SqlConnection)
-    '    Dim cmd As New SqlCommand($"UPDATE Cliente SET  {fileds} WHERE Email='{email}'", connectionSQL)
-    '    cmd.ExecuteNonQuery()
-    '    Return cmd
-    'End Function
+    Public Sub ActualizarUnCliente(
+            nombre As String,
+            apellido As String,
+            email As String,
+            telefono As String,
+            direccion As String,
+            fechaNacimiento As String,
+            genero As String,
+            estadoCivil As String,
+            fechaRegistro As String
+        )
+
+        Dim conexionConSQL As New SqlConnection(Environment.GetEnvironmentVariable("DB_STORE_EXPRESS"))
+
+        Dim consulta As String = $"UPDATE {Environment.GetEnvironmentVariable("DB_TABLE_STORE_EXPRESS")} SET 
+        Nombre = @Nombre,
+        Apellido = @Apellido,
+        Email = @Email,
+        Telefono = @Telefono,
+        Direccion = @Direccion,
+        FechaNacimiento = @FechaNacimiento,
+        Genero = @Genero,
+        EstadoCivil = @EstadoCivil,
+        FechaRegistro = @FechaRegistro
+        WHERE Email = @Email"
+
+        Try
+            conexionConSQL.Open()
+            Dim comando As New SqlCommand(consulta, conexionConSQL)
+            comando.Parameters.AddWithValue("@Nombre", nombre)
+            comando.Parameters.AddWithValue("@Apellido", apellido)
+            comando.Parameters.AddWithValue("@Email", email)
+            comando.Parameters.AddWithValue("@Telefono", telefono)
+            comando.Parameters.AddWithValue("@Direccion", direccion)
+            comando.Parameters.AddWithValue("@FechaNacimiento", fechaNacimiento)
+            comando.Parameters.AddWithValue("@Genero", genero)
+            comando.Parameters.AddWithValue("@EstadoCivil", estadoCivil)
+            comando.Parameters.AddWithValue("@FechaRegistro", fechaRegistro)
+
+            comando.ExecuteNonQuery()
+
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        Finally
+            conexionConSQL.Close()
+        End Try
+    End Sub
+
 
 
 End Class
