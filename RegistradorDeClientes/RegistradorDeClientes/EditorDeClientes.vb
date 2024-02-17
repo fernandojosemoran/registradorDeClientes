@@ -12,6 +12,8 @@ Public Class EditorDeClientes
             Me.WindowState = FormWindowState.Normal
         Else
             Me.WindowState = FormWindowState.Maximized
+            'pbvisualizador.size = new size(1050, 400)
+            'btnbuscarimagen.location = new point(370, 415)
         End If
     End Sub
 
@@ -90,7 +92,10 @@ Public Class EditorDeClientes
         Me.Hide()
     End Sub
 
+
     Private Sub EditorDeClientes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+
         Dim consejo As New ToolTip()
 
         consejo.SetToolTip(btnListo, "Aceptar")

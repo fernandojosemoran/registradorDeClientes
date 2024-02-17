@@ -46,7 +46,7 @@ Partial Class Form1
         '
         'pnlCamposDeAutenticacion
         '
-        Me.pnlCamposDeAutenticacion.BackColor = System.Drawing.Color.Black
+        Me.pnlCamposDeAutenticacion.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
         Me.pnlCamposDeAutenticacion.Controls.Add(Me.Panel4)
         Me.pnlCamposDeAutenticacion.Controls.Add(Me.txtEmail)
         Me.pnlCamposDeAutenticacion.Controls.Add(Me.Panel2)
@@ -55,6 +55,7 @@ Partial Class Form1
         Me.pnlCamposDeAutenticacion.Controls.Add(Me.btnAceptar)
         Me.pnlCamposDeAutenticacion.Controls.Add(Me.txtPassword)
         Me.pnlCamposDeAutenticacion.Controls.Add(Me.txtUsuario)
+        Me.pnlCamposDeAutenticacion.ForeColor = System.Drawing.Color.FromArgb(CType(CType(62, Byte), Integer), CType(CType(62, Byte), Integer), CType(CType(66, Byte), Integer))
         Me.pnlCamposDeAutenticacion.Location = New System.Drawing.Point(170, 73)
         Me.pnlCamposDeAutenticacion.Name = "pnlCamposDeAutenticacion"
         Me.pnlCamposDeAutenticacion.Size = New System.Drawing.Size(456, 309)
@@ -226,7 +227,7 @@ Partial Class Form1
         '
         'lblAlerta
         '
-        Me.lblAlerta.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.lblAlerta.BackColor = System.Drawing.Color.FromArgb(CType(CType(37, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(38, Byte), Integer))
         Me.lblAlerta.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblAlerta.ForeColor = System.Drawing.SystemColors.Control
         Me.lblAlerta.Location = New System.Drawing.Point(170, 398)
