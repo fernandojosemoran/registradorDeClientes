@@ -2,6 +2,20 @@
 
 Public Class DbClienteFuncionalidades
 
+    Public Function ManejarBaseDeDatos() As SqlConnection
+        Try
+            Dim conexionConSQL As New SqlConnection(Environment.GetEnvironmentVariable("DB_STORE_EXPRESS"))
+            conexionConSQL.Open()
+
+            Return conexionConSQL
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+            Dim conexionConSQL As New SqlConnection(Environment.GetEnvironmentVariable("DB_STORE_EXPRESS"))
+            conexionConSQL.Open()
+            Return conexionConSQL
+        End Try
+    End Function
+
     Public Sub CrearCliente(
         Code As String,
         nombre As String,
@@ -14,7 +28,9 @@ Public Class DbClienteFuncionalidades
         estadoCivil As String,
         fechaRegistro As String
     )
-        Dim conexionConSQL As New SqlConnection(Environment.GetEnvironmentVariable("DB_STORE_EXPRESS"))
+
+        MessageBox.Show(estadoCivil)
+        Dim conexionConSQL As SqlConnection = ManejarBaseDeDatos()
 
         Dim consulta As String = $"INSERT INTO {Environment.GetEnvironmentVariable("DB_TABLE_STORE_EXPRESS")}(
             Code,
@@ -41,7 +57,6 @@ Public Class DbClienteFuncionalidades
         )"
 
         Try
-            conexionConSQL.Open()
             Dim comando As New SqlCommand(consulta, conexionConSQL)
             comando.Parameters.AddWithValue("@Code", Code)
             comando.Parameters.AddWithValue("@Nombre", nombre)
@@ -65,11 +80,10 @@ Public Class DbClienteFuncionalidades
 
     Public Sub EliminarCliente(email As String)
 
-        Dim conexionConSQL As New SqlConnection(Environment.GetEnvironmentVariable("DB_STORE_EXPRESS"))
+        Dim conexionConSQL As SqlConnection = ManejarBaseDeDatos()
         Dim consulta As String = $"DELETE FROM {Environment.GetEnvironmentVariable("DB_TABLE_STORE_EXPRESS")} WHERE Email=@email"
 
         Try
-            conexionConSQL.Open()
             Dim comando As New SqlCommand(consulta, conexionConSQL)
             comando.Parameters.AddWithValue("@email", email)
             comando.ExecuteNonQuery()
@@ -81,13 +95,12 @@ Public Class DbClienteFuncionalidades
     End Sub
 
     Public Function ObtenerTodosLosClientes() As DataTable
-        Dim conexionConSQL As New SqlConnection(Environment.GetEnvironmentVariable("DB_STORE_EXPRESS"))
+        Dim conexionConSQL As SqlConnection = ManejarBaseDeDatos()
         Dim consulta As String = $"SELECT * FROM {Environment.GetEnvironmentVariable("DB_TABLE_STORE_EXPRESS")}"
 
         Dim dataTable As New DataTable()
 
         Try
-            conexionConSQL.Open()
             Dim comando As New SqlCommand(consulta, conexionConSQL)
             Dim dataReader As SqlDataReader = comando.ExecuteReader()
             dataTable.Load(dataReader)
@@ -107,12 +120,11 @@ Public Class DbClienteFuncionalidades
 
         Dim dataTable As New DataTable()
 
-        Dim conexionConSQL As New SqlConnection(Environment.GetEnvironmentVariable("DB_STORE_EXPRESS"))
+        Dim conexionConSQL As SqlConnection = ManejarBaseDeDatos()
         Dim consulta As String = $"SELECT * FROM {Environment.GetEnvironmentVariable("DB_TABLE_STORE_EXPRESS")} WHERE {filtroCapitalizado} LIKE @{filtro} + '%' ORDER BY {filtroCapitalizado}"
 
 
         Try
-            conexionConSQL.Open()
             Dim comando As New SqlCommand(consulta, conexionConSQL)
             comando.Parameters.AddWithValue($"@{filtro}", texto)
             Dim dataReader As SqlDataReader = comando.ExecuteReader()
@@ -129,51 +141,45 @@ Public Class DbClienteFuncionalidades
 
 
     Public Sub ActualizarUnCliente(
-            nombre As String,
-            apellido As String,
-            email As String,
-            telefono As String,
-            direccion As String,
-            fechaNacimiento As String,
-            genero As String,
-            estadoCivil As String,
-            fechaRegistro As String
-        )
+        nombre As String,
+        apellido As String,
+        email As String,
+        telefono As String,
+        direccion As String,
+        fechaNacimiento As Date,
+        genero As String,
+        estadoCivil As String,
+        code As String
+)
+        Using conexionConSQL As SqlConnection = ManejarBaseDeDatos()
+            Dim consulta As String = $"UPDATE {Environment.GetEnvironmentVariable("DB_TABLE_STORE_EXPRESS")} SET 
+            Nombre = @Nombre,
+            Apellido = @Apellido,
+            Email = @Email,
+            Telefono = @Telefono,
+            Direccion = @Direccion,
+            FechaNacimiento = @FechaNacimiento,
+            Genero = @Genero,
+            EstadoCivil = @EstadoCivil
+            WHERE Code = @Code"
 
-        Dim conexionConSQL As New SqlConnection(Environment.GetEnvironmentVariable("DB_STORE_EXPRESS"))
-
-        Dim consulta As String = $"UPDATE {Environment.GetEnvironmentVariable("DB_TABLE_STORE_EXPRESS")} SET 
-        Nombre = @Nombre,
-        Apellido = @Apellido,
-        Email = @Email,
-        Telefono = @Telefono,
-        Direccion = @Direccion,
-        FechaNacimiento = @FechaNacimiento,
-        Genero = @Genero,
-        EstadoCivil = @EstadoCivil,
-        FechaRegistro = @FechaRegistro
-        WHERE Email = @Email"
-
-        Try
-            conexionConSQL.Open()
-            Dim comando As New SqlCommand(consulta, conexionConSQL)
-            comando.Parameters.AddWithValue("@Nombre", nombre)
-            comando.Parameters.AddWithValue("@Apellido", apellido)
-            comando.Parameters.AddWithValue("@Email", email)
-            comando.Parameters.AddWithValue("@Telefono", telefono)
-            comando.Parameters.AddWithValue("@Direccion", direccion)
-            comando.Parameters.AddWithValue("@FechaNacimiento", fechaNacimiento)
-            comando.Parameters.AddWithValue("@Genero", genero)
-            comando.Parameters.AddWithValue("@EstadoCivil", estadoCivil)
-            comando.Parameters.AddWithValue("@FechaRegistro", fechaRegistro)
-
-            comando.ExecuteNonQuery()
-
-        Catch ex As Exception
-            MessageBox.Show(ex.Message)
-        Finally
-            conexionConSQL.Close()
-        End Try
+            Try
+                Using comando As New SqlCommand(consulta, conexionConSQL)
+                    comando.Parameters.AddWithValue("@Nombre", nombre)
+                    comando.Parameters.AddWithValue("@Apellido", apellido)
+                    comando.Parameters.AddWithValue("@Email", email)
+                    comando.Parameters.AddWithValue("@Telefono", telefono)
+                    comando.Parameters.AddWithValue("@Direccion", direccion)
+                    comando.Parameters.AddWithValue("@FechaNacimiento", fechaNacimiento)
+                    comando.Parameters.AddWithValue("@Genero", genero)
+                    comando.Parameters.AddWithValue("@EstadoCivil", estadoCivil)
+                    comando.Parameters.AddWithValue("@Code", code)
+                    comando.ExecuteNonQuery()
+                End Using
+            Catch ex As Exception
+                Throw New Exception($"Error al actualizar el cliente en la base de datos: {ex.Message}")
+            End Try
+        End Using
     End Sub
 
 

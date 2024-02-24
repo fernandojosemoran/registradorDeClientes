@@ -40,6 +40,7 @@ Partial Class Form1
         Me.btnExpandir = New System.Windows.Forms.Button()
         Me.btnCerrar = New System.Windows.Forms.Button()
         Me.lblAlerta = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.pnlCamposDeAutenticacion.SuspendLayout()
         Me.Panel3.SuspendLayout()
         Me.SuspendLayout()
@@ -236,6 +237,18 @@ Partial Class Form1
         Me.lblAlerta.TabIndex = 8
         Me.lblAlerta.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.BackColor = System.Drawing.Color.Transparent
+        Me.Label1.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.ForeColor = System.Drawing.Color.Transparent
+        Me.Label1.Location = New System.Drawing.Point(-1, 4)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(162, 30)
+        Me.Label1.TabIndex = 9
+        Me.Label1.Text = "Inicio de sesion "
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -243,6 +256,7 @@ Partial Class Form1
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(806, 455)
+        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.lblAlerta)
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.pnlCamposDeAutenticacion)
@@ -255,6 +269,7 @@ Partial Class Form1
         Me.Panel3.ResumeLayout(False)
         Me.Panel3.PerformLayout()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
@@ -275,4 +290,5 @@ Partial Class Form1
     Friend WithEvents Panel4 As Panel
     Friend WithEvents txtEmail As TextBox
     Friend WithEvents lblAlerta As Label
+    Friend WithEvents Label1 As Label
 End Class

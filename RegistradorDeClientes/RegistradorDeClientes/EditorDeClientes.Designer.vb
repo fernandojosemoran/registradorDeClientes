@@ -58,8 +58,11 @@ Partial Class EditorDeClientes
         Me.FlowLayoutPanel6 = New System.Windows.Forms.FlowLayoutPanel()
         Me.FlowLayoutPanel4 = New System.Windows.Forms.FlowLayoutPanel()
         Me.FlowLayoutPanel7 = New System.Windows.Forms.FlowLayoutPanel()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.lblCode = New System.Windows.Forms.Label()
         Me.Panel5.SuspendLayout()
         CType(Me.pbVisualizador, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.FlowLayoutPanel7.SuspendLayout()
         Me.SuspendLayout()
         '
         'dtpFechaDeNacimiento
@@ -130,7 +133,7 @@ Partial Class EditorDeClientes
         Me.cbGenero.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.cbGenero.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.cbGenero.FormattingEnabled = True
-        Me.cbGenero.Items.AddRange(New Object() {"Hombre", "Mujer", "Goku", "Transformer"})
+        Me.cbGenero.Items.AddRange(New Object() {"Hombre", "Mujer", "Goku"})
         Me.cbGenero.Location = New System.Drawing.Point(649, 186)
         Me.cbGenero.Name = "cbGenero"
         Me.cbGenero.Size = New System.Drawing.Size(173, 21)
@@ -147,10 +150,10 @@ Partial Class EditorDeClientes
         '
         'txtDireccion
         '
-        Me.txtDireccion.BackColor = System.Drawing.Color.FromArgb(CType(CType(62, Byte), Integer), CType(CType(62, Byte), Integer), CType(CType(66, Byte), Integer))
+        Me.txtDireccion.BackColor = System.Drawing.Color.White
         Me.txtDireccion.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtDireccion.Font = New System.Drawing.Font("Segoe UI", 8.25!)
-        Me.txtDireccion.ForeColor = System.Drawing.SystemColors.Window
+        Me.txtDireccion.ForeColor = System.Drawing.Color.Black
         Me.txtDireccion.Location = New System.Drawing.Point(76, 276)
         Me.txtDireccion.MaxLength = 50
         Me.txtDireccion.Multiline = True
@@ -464,12 +467,33 @@ Partial Class EditorDeClientes
         'FlowLayoutPanel7
         '
         Me.FlowLayoutPanel7.BackColor = System.Drawing.Color.Transparent
+        Me.FlowLayoutPanel7.Controls.Add(Me.Label1)
+        Me.FlowLayoutPanel7.Controls.Add(Me.lblCode)
         Me.FlowLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill
         Me.FlowLayoutPanel7.FlowDirection = System.Windows.Forms.FlowDirection.TopDown
         Me.FlowLayoutPanel7.Location = New System.Drawing.Point(0, 0)
         Me.FlowLayoutPanel7.Name = "FlowLayoutPanel7"
         Me.FlowLayoutPanel7.Size = New System.Drawing.Size(858, 522)
         Me.FlowLayoutPanel7.TabIndex = 69
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.ForeColor = System.Drawing.Color.Transparent
+        Me.Label1.Location = New System.Drawing.Point(3, 0)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(163, 30)
+        Me.Label1.TabIndex = 1
+        Me.Label1.Text = "Editor de cliente"
+        '
+        'lblCode
+        '
+        Me.lblCode.AutoSize = True
+        Me.lblCode.Location = New System.Drawing.Point(3, 30)
+        Me.lblCode.Name = "lblCode"
+        Me.lblCode.Size = New System.Drawing.Size(0, 13)
+        Me.lblCode.TabIndex = 0
         '
         'EditorDeClientes
         '
@@ -514,6 +538,8 @@ Partial Class EditorDeClientes
         Me.Panel5.ResumeLayout(False)
         Me.Panel5.PerformLayout()
         CType(Me.pbVisualizador, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.FlowLayoutPanel7.ResumeLayout(False)
+        Me.FlowLayoutPanel7.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -553,4 +579,6 @@ Partial Class EditorDeClientes
     Friend WithEvents FlowLayoutPanel6 As FlowLayoutPanel
     Friend WithEvents FlowLayoutPanel4 As FlowLayoutPanel
     Friend WithEvents FlowLayoutPanel7 As FlowLayoutPanel
+    Friend WithEvents lblCode As Label
+    Friend WithEvents Label1 As Label
 End Class

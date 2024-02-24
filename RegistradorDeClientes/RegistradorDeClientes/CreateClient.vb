@@ -115,10 +115,10 @@ Public Class CreateClient
                     email:=txtEmail.Text,
                     telefono:=txtTelefono.Text,
                     direccion:=txtDireccion.Text,
-                    fechaNacimiento:=dtpFechaDeNacimiento.Text,
+                    fechaNacimiento:=dtpFechaDeNacimiento.Value.Date.ToString("yyyy-MM-dd"),
                     genero:=cbGenero.Text,
                     estadoCivil:=cbEstadoCivil.Text,
-                    fechaRegistro:=DateTime.Now
+                    fechaRegistro:=DateTime.Now.ToString("yyyy-MM-dd")
                 )
 
                 ListadorDeClientes.Show()

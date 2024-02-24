@@ -54,13 +54,14 @@ Partial Class CreateClient
         Me.btnMinimizar = New System.Windows.Forms.Button()
         Me.btnExpandir = New System.Windows.Forms.Button()
         Me.btnCerrar = New System.Windows.Forms.Button()
+        Me.Label1 = New System.Windows.Forms.Label()
         CType(Me.pbVisualizador, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'pbVisualizador
         '
-        Me.pbVisualizador.BackColor = System.Drawing.Color.DimGray
+        Me.pbVisualizador.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
         Me.pbVisualizador.Location = New System.Drawing.Point(277, 86)
         Me.pbVisualizador.Name = "pbVisualizador"
         Me.pbVisualizador.Size = New System.Drawing.Size(295, 205)
@@ -80,7 +81,9 @@ Partial Class CreateClient
         '
         'lblAlerts
         '
+        Me.lblAlerts.BackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
         Me.lblAlerts.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblAlerts.ForeColor = System.Drawing.SystemColors.Control
         Me.lblAlerts.Location = New System.Drawing.Point(223, 423)
         Me.lblAlerts.Name = "lblAlerts"
         Me.lblAlerts.Size = New System.Drawing.Size(394, 62)
@@ -214,7 +217,7 @@ Partial Class CreateClient
         Me.cbGenero.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.cbGenero.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.cbGenero.FormattingEnabled = True
-        Me.cbGenero.Items.AddRange(New Object() {"Hombre", "Mujer", "Goku", "Transformer"})
+        Me.cbGenero.Items.AddRange(New Object() {"Hombre", "Mujer", "Goku"})
         Me.cbGenero.Location = New System.Drawing.Point(604, 180)
         Me.cbGenero.Name = "cbGenero"
         Me.cbGenero.Size = New System.Drawing.Size(173, 21)
@@ -376,6 +379,18 @@ Partial Class CreateClient
         Me.btnCerrar.TabIndex = 1
         Me.btnCerrar.UseVisualStyleBackColor = False
         '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.BackColor = System.Drawing.Color.Transparent
+        Me.Label1.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.ForeColor = System.Drawing.SystemColors.Control
+        Me.Label1.Location = New System.Drawing.Point(4, 3)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(129, 30)
+        Me.Label1.TabIndex = 32
+        Me.Label1.Text = "Crear cliente"
+        '
         'CreateClient
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -383,6 +398,7 @@ Partial Class CreateClient
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(872, 512)
+        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.btnRegresar)
         Me.Controls.Add(Me.dtpFechaDeNacimiento)
@@ -445,4 +461,5 @@ Partial Class CreateClient
     Friend WithEvents btnMinimizar As Button
     Friend WithEvents btnExpandir As Button
     Friend WithEvents btnCerrar As Button
+    Friend WithEvents Label1 As Label
 End Class

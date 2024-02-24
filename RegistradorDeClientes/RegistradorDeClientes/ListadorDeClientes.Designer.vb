@@ -28,6 +28,7 @@ Partial Class ListadorDeClientes
         Me.dgListaDeUsuarios = New System.Windows.Forms.DataGridView()
         Me.txtBuscar = New System.Windows.Forms.TextBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.btnReload = New System.Windows.Forms.Button()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.btnMinimizarVentana = New System.Windows.Forms.Button()
         Me.btnExpandirVentana = New System.Windows.Forms.Button()
@@ -60,10 +61,11 @@ Partial Class ListadorDeClientes
         '
         'dgListaDeUsuarios
         '
-        Me.dgListaDeUsuarios.BackgroundColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.dgListaDeUsuarios.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
         Me.dgListaDeUsuarios.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgListaDeUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgListaDeUsuarios.Location = New System.Drawing.Point(46, 70)
+        Me.dgListaDeUsuarios.GridColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(60, Byte), Integer), CType(CType(60, Byte), Integer))
+        Me.dgListaDeUsuarios.Location = New System.Drawing.Point(57, 71)
         Me.dgListaDeUsuarios.Name = "dgListaDeUsuarios"
         Me.dgListaDeUsuarios.Size = New System.Drawing.Size(827, 418)
         Me.dgListaDeUsuarios.TabIndex = 2
@@ -85,16 +87,27 @@ Partial Class ListadorDeClientes
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.Black
+        Me.Panel1.Controls.Add(Me.btnReload)
         Me.Panel1.Controls.Add(Me.Panel3)
         Me.Panel1.Controls.Add(Me.cbxSeleccionar)
         Me.Panel1.Controls.Add(Me.pnlBuscar)
         Me.Panel1.Controls.Add(Me.txtBuscar)
         Me.Panel1.Controls.Add(Me.cbFiltrador)
         Me.Panel1.Controls.Add(Me.btnAgregarCliente)
-        Me.Panel1.Location = New System.Drawing.Point(36, 1)
+        Me.Panel1.Location = New System.Drawing.Point(36, -1)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(848, 50)
         Me.Panel1.TabIndex = 5
+        '
+        'btnReload
+        '
+        Me.btnReload.BackgroundImage = CType(resources.GetObject("btnReload.BackgroundImage"), System.Drawing.Image)
+        Me.btnReload.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnReload.Location = New System.Drawing.Point(668, 16)
+        Me.btnReload.Name = "btnReload"
+        Me.btnReload.Size = New System.Drawing.Size(24, 23)
+        Me.btnReload.TabIndex = 12
+        Me.btnReload.UseVisualStyleBackColor = True
         '
         'Panel3
         '
@@ -257,4 +270,5 @@ Partial Class ListadorDeClientes
     Friend WithEvents btnMinimizar As Button
     Friend WithEvents btnExpandir As Button
     Friend WithEvents btnCerrar As Button
+    Friend WithEvents btnReload As Button
 End Class

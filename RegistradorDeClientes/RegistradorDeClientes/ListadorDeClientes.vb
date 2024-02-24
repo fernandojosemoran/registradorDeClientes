@@ -3,21 +3,36 @@
 Public Class ListadorDeClientes
     Private xOffset As Integer
     Private yOffset As Integer
+
+    Private WithEvents timer As New Timer()
     Private Sub ListadorDeClientes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'Asignamos un texto temporal al ComboBox de filtro para que el usuario pueda saber cual es su funcionalidad'
         cbFiltrador.Text = "Filtro"
 
-        'hacemos una instancia de la clase DbClienteFuncionalidades que contiene funcionalidades que nos permitiran comunicarnos con la base de datos'
-        Dim ObtenerClientes As New DbClienteFuncionalidades()
-        'Obtenemos todos los datos de la base de datos, en este caso son los registros de los clientes'
-        Dim data = ObtenerClientes.ObtenerTodosLosClientes()
+        timer.Interval = 500 'Medjo segundo'
+        timer.Enabled = False 'Indicamos que no se ejecute enseguida'
 
-        'Le asignamos los datos devueltos por la base de datos al elemento DataGridView que es la tabla donde se mostraran los registros'
-        dgListaDeUsuarios.DataSource = data
-        'Hay columnas que nos devuelve la base de datos que no nos interesa mostrar por ejemplo el ID,CreadoEn,ActualizadoEn'
-        dgListaDeUsuarios.Columns("Id").Visible = False
-        dgListaDeUsuarios.Columns("CreadoEn").Visible = False
-        dgListaDeUsuarios.Columns("ActualizadoEn").Visible = False
+        timer.Start()
+
+        AddHandler timer.Tick, Sub()
+                                   ' Hacemos una instancia de la clase DbClienteFuncionalidades que contiene funcionalidades para comunicarse con la base de datos'
+                                   Dim ObtenerClientes As New DbClienteFuncionalidades()
+
+                                   ' Obtenemos todos los datos de la base de datos, en este caso son los registros de los clientes'
+                                   Dim data = ObtenerClientes.ObtenerTodosLosClientes()
+
+                                   ' Le asignamos los datos devueltos por la base de datos al elemento DataGridView que es la tabla donde se mostrarán los registros'
+                                   dgListaDeUsuarios.DataSource = data
+
+                                   ' Hay columnas que nos devuelve la base de datos que no nos interesa mostrar, como el ID, CreadoEn y ActualizadoEn'
+                                   dgListaDeUsuarios.Columns("Id").Visible = False
+                                   dgListaDeUsuarios.Columns("CreadoEn").Visible = False
+                                   dgListaDeUsuarios.Columns("ActualizadoEn").Visible = False
+
+                                   ' Detenemos el temporizador después de que se ha ejecutado una vez
+                                   timer.Stop()
+                                   timer.Dispose() ' Liberamos recursos del temporizador
+                               End Sub
 
         'Usamos la variable consejo declara e inicializada anteriormente con una instancia de un controlador que nos ayudara dirigir al usuario de como usar el programa'
         toolTip.SetToolTip(btnAgregarCliente, "Agregar Un Cliente") 'Cuando el mouse pose encima del boton de cerrar entonces mostrar Cerrar Ventana Emergente'
@@ -28,6 +43,7 @@ Public Class ListadorDeClientes
         toolTip.SetToolTip(cbFiltrador, "Filtrar Clientes Por Categoria") 'Cuando el mouse pose encima del ComboBox Filtrador entonces mostrar Filtrar Clientes Por Categoria'
         toolTip.SetToolTip(cbxSeleccionar, "Activar Opcion Para Eliminar Clientes") 'Cuando el mouse pose encima del ComboBox de seleccionar entonces mostrar mensaje Activar Opcion Para Eliminar Clientes'
         toolTip.SetToolTip(dgListaDeUsuarios, "Tabla De Clientes") 'Cuando el mouse pose encima de la tabla de registro entonces mostrar mensaje Tabla De Clientes'
+        toolTip.SetToolTip(btnReload, "Recargar registro") 'Cuando el mouse pose encima del boton entonces mostrar mensaje recargar registro'
 
         'Indicamos al formulario que habilite el uso de eventos de teclado'
         Me.KeyPreview = True
@@ -44,6 +60,7 @@ Public Class ListadorDeClientes
         'dgListaDeUsuarios.Columns.Add("FechaNacimiento", dtpFechaDeRegistro.Text)
     End Sub
 
+
     'Asignamos un evento de teclado que se activara cuando la tecla sea pulsada'
     Private Sub ListadorDeClientes_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
         'cuando pulsemos la tecla "ctrl" y la tecla "d" entonces ejecutar el codigo interno'
@@ -51,7 +68,7 @@ Public Class ListadorDeClientes
             'Mostramos el formulario de crear un cliente'
             CreateClient.Show()
             'Despues cerramos el formulario actual es decir el formulario de listado de registros'
-            Me.Hide()
+            Me.Close()
         End If
 
         'cuando pulsemos la tecla "ctrl" y la tecla "j" entonces ejecutar el codigo interno'
@@ -89,7 +106,7 @@ Public Class ListadorDeClientes
         'Entonces mostramos el formulario CreateClient'
         formCreateClient.Show()
         'Escondemos el formulario actual es decir el listado de los registros o clientes'
-        Me.Hide()
+        Me.Close()
     End Sub
 
     'Usamos el evento click para el boton cerrar'
@@ -125,8 +142,6 @@ Public Class ListadorDeClientes
 
         'Si el textbox buscar esta basio entonces'
         If txtBuscar.Text = "" Then
-            'Asignarle un nombre para que el usuario pueda saber para que sirve el elemento'
-            cbFiltrador.Text = "Filtro"
             'Mostramos todos los datos devueltos de la base de datos en la tabla de registro pero con la busqueda de usuarios'
             'escrita y filtrada mediante la categoria seleccionada por el usuario'
             dgListaDeUsuarios.DataSource = todosLosDatos
@@ -241,9 +256,9 @@ Public Class ListadorDeClientes
 
         If e.KeyCode = Keys.N Then
             If estado = False Then
-                estado = True
                 ' Verificar si hay una celda seleccionada
                 If dgListaDeUsuarios.SelectedCells.Count > 0 Then
+
                     Dim rowIndex As Integer = dgListaDeUsuarios.SelectedCells(0).RowIndex
                     Dim email As String = dgListaDeUsuarios.Rows(rowIndex).Cells("Email").Value.ToString()
                     Dim telefono As String = dgListaDeUsuarios.Rows(rowIndex).Cells("Telefono").Value.ToString()
@@ -253,6 +268,7 @@ Public Class ListadorDeClientes
                     Dim apellido As String = dgListaDeUsuarios.Rows(rowIndex).Cells("Apellido").Value.ToString()
                     Dim nombre As String = dgListaDeUsuarios.Rows(rowIndex).Cells("Nombre").Value.ToString()
                     Dim direccion As String = dgListaDeUsuarios.Rows(rowIndex).Cells("Direccion").Value.ToString()
+                    Dim code As String = dgListaDeUsuarios.Rows(rowIndex).Cells("Code").Value.ToString()
 
                     ' Establecer los valores predeterminados en los campos del formulario EditorDeClientes
                     Dim EditorDeRegistro As New EditorDeClientes()
@@ -264,15 +280,38 @@ Public Class ListadorDeClientes
                     EditorDeRegistro.cbEstadoCivil.SelectedItem = estadoCivil
                     EditorDeRegistro.cbGenero.SelectedItem = genero
                     EditorDeRegistro.dtpFechaDeNacimiento.Value = DateTime.Parse(fechaNacimiento)
+                    EditorDeRegistro.lblCode.Text = code
 
                     ' Mostrar el formulario EditorDeClientes
                     EditorDeRegistro.Show()
 
                     ' Ocultar el formulario actual
-                    Me.Hide()
+                    Me.Close()
                 End If
             End If
         End If
     End Sub
 
+    Private Sub btnReload_Click(sender As Object, e As EventArgs) Handles btnReload.Click
+        txtBuscar.Text = ""
+        cbFiltrador.Text = "Filtro"
+        cbxSeleccionar.Checked = False
+
+        'Intanciamos la clase DbClienteFuncionalidades que contiene los metodos para comunicarse con la base de datos'
+        Dim db As New DbClienteFuncionalidades()
+        'Obtenemos todos los registros de clientes y la guardamos en la variable todosLosDatos'
+        Dim todosLosDatos As DataTable = db.ObtenerTodosLosClientes()
+        'Mostramos todos los datos devueltos de la base de datos en la tabla de registro pero con la busqueda de usuarios'
+        'escrita y filtrada mediante la categoria seleccionada por el usuario'
+        dgListaDeUsuarios.DataSource = todosLosDatos
+        'Hay columnas que nos devuelve la base de datos que no nos interesa mostrar por ejemplo el ID,CreadoEn,ActualizadoEn'
+        dgListaDeUsuarios.Columns("Id").Visible = False
+        dgListaDeUsuarios.Columns("CreadoEn").Visible = False
+        dgListaDeUsuarios.Columns("ActualizadoEn").Visible = False
+
+    End Sub
+
+    Private Sub dgListaDeUsuarios_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgListaDeUsuarios.CellContentClick
+
+    End Sub
 End Class

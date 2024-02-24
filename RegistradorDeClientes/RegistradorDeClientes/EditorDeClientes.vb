@@ -1,8 +1,10 @@
-﻿Imports FluentValidation.Results
+﻿Imports System.Threading
+Imports FluentValidation.Results
 
 Public Class EditorDeClientes
     Private xOffset As Integer
     Private yOffset As Integer
+
     Private Sub btnCerrar_Click(sender As Object, e As EventArgs) Handles btnCerrarVentana.Click
         Application.Exit()
     End Sub
@@ -60,6 +62,7 @@ Public Class EditorDeClientes
         Dim result As ValidationResult = validador.Validate(modeloDeCliente)
 
         If result.IsValid Then
+
             Try
                 Dim interactuarConBaseDeDatos As New DbClienteFuncionalidades()
                 interactuarConBaseDeDatos.ActualizarUnCliente(
@@ -68,16 +71,17 @@ Public Class EditorDeClientes
                     email:=txtEmail.Text,
                     telefono:=txtTelefono.Text,
                     direccion:=txtDireccion.Text,
-                    fechaNacimiento:=dtpFechaDeNacimiento.Text,
+                    fechaNacimiento:=dtpFechaDeNacimiento.Value.Date.ToString("yyyy-MM-dd"),
                     genero:=cbGenero.Text,
                     estadoCivil:=cbEstadoCivil.Text,
-                    fechaRegistro:=DateTime.Now
+                    code:=lblCode.Text
                 )
 
                 ListadorDeClientes.Show()
+
                 Me.Hide()
             Catch ex As Exception
-                MessageBox.Show(ex.Message)
+                MessageBox.Show($"Error al actualizar cliente: {ex.Message}")
             End Try
         Else
             For Each [err] As ValidationFailure In result.Errors
@@ -94,7 +98,6 @@ Public Class EditorDeClientes
 
 
     Private Sub EditorDeClientes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
 
         Dim consejo As New ToolTip()
 
@@ -181,6 +184,21 @@ Public Class EditorDeClientes
     Private Sub txtDireccion_GotFocus(sender As Object, e As EventArgs) Handles txtDireccion.GotFocus
         If txtDireccion.Text = "Direccion" Then
             txtDireccion.Text = ""
+        End If
+    End Sub
+
+    Private Sub FlowLayoutPanel7_MouseDown(sender As Object, e As MouseEventArgs) Handles FlowLayoutPanel7.MouseDown
+        If e.Button = MouseButtons.Left Then
+            ' Almacenar la posición del mouse al hacer clic en la ventana
+            xOffset = e.X
+            yOffset = e.Y
+        End If
+    End Sub
+
+    Private Sub FlowLayoutPanel7_MouseMove(sender As Object, e As MouseEventArgs) Handles FlowLayoutPanel7.MouseMove
+        If e.Button = MouseButtons.Left Then
+            ' Mover la ventana según la posición del mouse actual y la posición donde se hizo clic inicialmente
+            Me.Location = New Point(Me.Left + e.X - xOffset, Me.Top + e.Y - yOffset)
         End If
     End Sub
 
