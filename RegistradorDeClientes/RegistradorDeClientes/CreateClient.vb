@@ -2,9 +2,12 @@
 Imports FluentValidation.Results
 
 Public Class CreateClient
+    'Declaramos dos variables que nos permitan calcular los ejes x y y de la ventana'
+    'Esto sera de utilidad para despues poder arrastrar la ventana'
     Private xOffset As Integer
     Private yOffset As Integer
     Private Sub CreateClient_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'Usamos la variable consejo declara e inicializada anteriormente con una instancia de un controlador que nos ayudara dirigir al usuario de como usar el programa'
         Dim consejo As New ToolTip()
 
         consejo.SetToolTip(btnListo, "Aceptar")
@@ -51,41 +54,59 @@ Public Class CreateClient
     End Sub
 
     Private Sub btnCerrar_Click(sender As Object, e As EventArgs) Handles btnCerrarVentana.Click
+        'Si el usuario da click al boton cerrar entonces cerramos el programa'
         Application.Exit()
     End Sub
 
     Private Sub btnExpandir_Click(sender As Object, e As EventArgs) Handles btnExpandirVentana.Click
+        'Si la ventana emergente esta extendida en toda la pantalla'
         If Me.WindowState = FormWindowState.Maximized Then
+            'Entonces la normalizamos al tamano asignado en el desarrollo'
             Me.WindowState = FormWindowState.Normal
         Else
+            'si no esta expandida en toda la pantalla entonces la expandimos'
             Me.WindowState = FormWindowState.Maximized
         End If
     End Sub
 
     Private Sub btnMinimizarVentana_Click(sender As Object, e As EventArgs) Handles btnMinimizarVentana.Click
+        'si no esta expandida en toda la pantalla entonces la expandimos'
         Me.WindowState = FormWindowState.Minimized
     End Sub
 
     Private Sub btnBuscarImagen_Click(sender As Object, e As EventArgs) Handles btnBuscarImagen.Click
+        'Declaramos una variable VentanaDeBusqueda que hace una instancia de  la clase OpenFileDialog'
+        'Esta clase nos permite abrir una ventana  emergente de navegacion'
         Dim VentanaDeBusqueda As New OpenFileDialog()
 
+        'Asignamos un inicio de partida para la ventana emergente, en esta caso asignamos la raiz del sistema C:\\'
         VentanaDeBusqueda.InitialDirectory = "C:\\"
+        'Asignamos un filtro de extensiones de imagenes en esta caso solo queremos imagenes con extension .jpg y .png'
         VentanaDeBusqueda.Filter = "Archivos de imagen (*.png, *.jpg)|*.png;*.jpg|Todos los archivos (*.*)|*.*"
+        'Asignamos cuantas imagenes poder seleccionar en este caso solo queremos seleccionar una imagen'
         VentanaDeBusqueda.FilterIndex = 1
+        'Guardamos el ultimo directorio donde buscamos las imagenes'
         VentanaDeBusqueda.RestoreDirectory = True
 
+        'Si la ventana emergente de busqueda ya estubo en uso y su estado es igual a que todo fue bien entonces:'
         If VentanaDeBusqueda.ShowDialog() = DialogResult.OK Then
+            'Obtenemos la ruta del directorio y la guardamos en en la variable rutaDeArchivo la cual guardara un texto'
             Dim rutaDeArchivo As String = VentanaDeBusqueda.FileName
+
+            'Guardamos en el pictureBox llamado pbVisualizador asignamos en su propiedad ImageLocation asignamos la ruta de la imagen que seleccionamos'
             pbVisualizador.ImageLocation = rutaDeArchivo
+            'Asignamos como se mire la imagen en el pictureBox llamado pbVisualizador'
             pbVisualizador.SizeMode = PictureBoxSizeMode.StretchImage
         End If
     End Sub
 
     Private Sub btnListo_Click(sender As Object, e As EventArgs) Handles btnListo.Click
-
+        'Instanciamos la clase ClientModel que contiene el modelo de filtros'
         Dim modeloDeCliente As New ClientModel()
 
-        Dim verificarRelleno = Function(textActual As String, indicador As String)
+        'Creamos un metodo que nos ayude a verificar si los textBox tienen el mismo texto, de ser ese el caso es un texto de relleno'
+        'Echo unicamente para ayudar al usuario que datos ingresar en cada textbox'
+        Dim verificarRelleno = Function(textActual As String, indicador As String) As String
                                    If textActual = indicador Then
                                        Return ""
                                    Else
@@ -93,41 +114,63 @@ Public Class CreateClient
                                    End If
                                End Function
 
+        'Llamamos a la clase modeloDeCliente que contiene los setters que son metodos de cada propiedad la cual nos ayudaran cambiar sus valores a por nuevos valores'
+        'Tambien hacemos uso del metodo verificarRelleno() anteriormente explicado que resive dos valores el valor del textbox actual y el valor de comprobacion del relleno'
+        'Estos nos ayudara a observar si tiene un relleno por defecto y si lo tiene eliminarlo y si el textbox tiene contenido insertado por el usuario no hacer nada pero si esta basio ayadirle un relleno'
         modeloDeCliente.SetNombre = verificarRelleno(txtNombre.Text, "Nombre")
         modeloDeCliente.SetApellido = verificarRelleno(txtApellido.Text, "Apellido")
         modeloDeCliente.SetEmail = verificarRelleno(txtEmail.Text, "Email")
         modeloDeCliente.SetNumero = verificarRelleno(txtTelefono.Text, "Telefono")
         modeloDeCliente.SetDireccion = verificarRelleno(txtDireccion.Text, "Direccion")
+        'Los siguientes datos no hacen uso del metodo verificarRelleno() por que como son datos muy selectivos por el programa se puede saber que el usuario no puede darnos valores erroneos'
+        'Por ejemplo la eleccion del sexo, solo hay dos sexos hombre y mujer. Entonces como ya sabemos que el usuario solo puede insertar uno de esos datos no verificamos el relleno por que cualquiera'
+        'De los dos datos es valido para guardar en la base de datos.'
         modeloDeCliente.SetEstadoCivil = cbEstadoCivil.Text
         modeloDeCliente.SetGenero = cbGenero.Text
-        modeloDeCliente.SetFechaDeRegistro = DateTime.Now
+        modeloDeCliente.SetFechaDeRegistro = DateTime.Now 'Asignamos la fecha actual antes de guardarla a la base de datos'
 
+        'Instanciamos la clase ValidationClientSchema que contiene los datos asignados mediante los setters que son metodos que modifican los valores de las propiedades'\
+        'Esta clase contiene el validador de los datos que queremos filtrar para saber si son correctos y de esta forma el usuario no envie datos erroneos a la base de datos.'
         Dim validador As ValidationClientSchema = New ValidationClientSchema()
+
+        'Declaramos una variable reuslt que contiene un tipo ValidationResult que verifica que los datos ingresados por el usaurio sean validos'
+        'Esto se logra mediante el metododo Validate() de la clase ValidationClientSchema'
         Dim result As ValidationResult = validador.Validate(modeloDeCliente)
 
+        'Si los valores dados por el usuario son validos entonces CrearCliente() que nos ayudara a crear un nuevo registro en la base de datos'
         If result.IsValid Then
             Try
+                'Instanceamos una la clase DbClienteFuncionalidades que contiene metodos para comunicarnos con la base de datos'
+                'En esta ocacion usaremos el metodo'
                 Dim interactuarConBaseDeDatos As New DbClienteFuncionalidades()
+
+                'Llamamos el metodo CrearCliente para crear un registro'
                 interactuarConBaseDeDatos.CrearCliente(
-                    Code:=Guid.NewGuid().ToString(),
+                    Code:=Guid.NewGuid().ToString(), 'Asignamos un codigo unico al campo codigo de la base de datos'
                     nombre:=txtNombre.Text,
                     apellido:=txtApellido.Text,
                     email:=txtEmail.Text,
                     telefono:=txtTelefono.Text,
                     direccion:=txtDireccion.Text,
-                    fechaNacimiento:=dtpFechaDeNacimiento.Value.Date.ToString("yyyy-MM-dd"),
+                    fechaNacimiento:=dtpFechaDeNacimiento.Value.Date.ToString("yyyy-MM-dd"), 'Guardamos la fecha con el orden de valores año/mes/dia por que es el orden que la base de datos acepta'
                     genero:=cbGenero.Text,
                     estadoCivil:=cbEstadoCivil.Text,
-                    fechaRegistro:=DateTime.Now.ToString("yyyy-MM-dd")
+                    fechaRegistro:=DateTime.Now.ToString("yyyy-MM-dd")'Guardamos la fecha con el orden de valores año/mes/dia por que es el orden que la base de datos acepta'
                 )
-
+                'Mostramos el formulario de listadoDeClientes'
                 ListadorDeClientes.Show()
+                'Luego lo ocultamos pero no lo cerramos de todo esto ayuda a que la aplicacion opere mas rapido los formularios ya que el formulario queda guardado en memoria'
+                'Si quieres cerrar el formulario totalmente sin guardarlo en memoria y liberar espacio de tu RAM puedes usar Me.Close()'
                 Me.Hide()
             Catch ex As Exception
-                MessageBox.Show(ex.Message)
+                'Guardamos el error en un archivo.log para tener mas control de los errores y poder observarlos de forma que no interrumpa la operabilidad del usario'
+                'Ademas llevar un registro de ellos ayuda a saber que problemas debes de solucionar para mejorar la funcionalidad del programa'
+                MessageBox.Show($"Error al crear cliente: {ex.Message}")
             End Try
         Else
-            For Each [err] As ValidationFailure In result.Errors
+            'En caso que los datos ingresados por el usuario sean invalidos, los mostraremos en un textBox llamado txtAlertas donde el usuario podra observar en que campo se equivoco'
+            'Los errores que el usuario observara son errores personalizados, no errores del programa como tal'
+            For Each [err] As ValidationFailure In result.Errors 'Usamos un bucle for que recorra todos los errores existentes'
                 'Mostramos los errores al usuario
                 lblAlerts.Text = [err].ErrorMessage
             Next
