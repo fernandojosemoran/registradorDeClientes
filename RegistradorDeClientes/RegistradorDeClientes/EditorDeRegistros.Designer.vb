@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class EditorDeClientes
+Partial Class EditorDeRegistros
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -22,8 +22,7 @@ Partial Class EditorDeClientes
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(EditorDeClientes))
-        Me.dtpFechaDeNacimiento = New System.Windows.Forms.DateTimePicker()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(EditorDeRegistros))
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.cbEstadoCivil = New System.Windows.Forms.ComboBox()
         Me.Panel3 = New System.Windows.Forms.Panel()
@@ -57,29 +56,14 @@ Partial Class EditorDeClientes
         Me.btnRegresar = New System.Windows.Forms.Button()
         Me.FlowLayoutPanel6 = New System.Windows.Forms.FlowLayoutPanel()
         Me.FlowLayoutPanel4 = New System.Windows.Forms.FlowLayoutPanel()
-        Me.FlowLayoutPanel7 = New System.Windows.Forms.FlowLayoutPanel()
-        Me.Label1 = New System.Windows.Forms.Label()
+        Me.dtpFechaDeNacimiento = New System.Windows.Forms.DateTimePicker()
         Me.lblCode = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.FlowLayoutPanel7 = New System.Windows.Forms.FlowLayoutPanel()
         Me.Panel5.SuspendLayout()
         CType(Me.pbVisualizador, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.FlowLayoutPanel7.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'dtpFechaDeNacimiento
-        '
-        Me.dtpFechaDeNacimiento.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.dtpFechaDeNacimiento.CalendarFont = New System.Drawing.Font("Segoe UI", 8.25!)
-        Me.dtpFechaDeNacimiento.Checked = False
-        Me.dtpFechaDeNacimiento.Cursor = System.Windows.Forms.Cursors.WaitCursor
-        Me.dtpFechaDeNacimiento.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpFechaDeNacimiento.Location = New System.Drawing.Point(649, 148)
-        Me.dtpFechaDeNacimiento.MaxDate = New Date(2024, 12, 31, 0, 0, 0, 0)
-        Me.dtpFechaDeNacimiento.MinDate = New Date(1900, 1, 1, 0, 0, 0, 0)
-        Me.dtpFechaDeNacimiento.Name = "dtpFechaDeNacimiento"
-        Me.dtpFechaDeNacimiento.RightToLeftLayout = True
-        Me.dtpFechaDeNacimiento.Size = New System.Drawing.Size(173, 20)
-        Me.dtpFechaDeNacimiento.TabIndex = 53
-        Me.dtpFechaDeNacimiento.UseWaitCursor = True
         '
         'Panel4
         '
@@ -258,7 +242,7 @@ Partial Class EditorDeClientes
         Me.lblAlerts.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
         Me.lblAlerts.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblAlerts.ForeColor = System.Drawing.SystemColors.Control
-        Me.lblAlerts.Location = New System.Drawing.Point(220, 454)
+        Me.lblAlerts.Location = New System.Drawing.Point(220, 441)
         Me.lblAlerts.Name = "lblAlerts"
         Me.lblAlerts.Size = New System.Drawing.Size(420, 62)
         Me.lblAlerts.TabIndex = 34
@@ -464,36 +448,44 @@ Partial Class EditorDeClientes
         Me.FlowLayoutPanel4.Size = New System.Drawing.Size(302, 366)
         Me.FlowLayoutPanel4.TabIndex = 68
         '
-        'FlowLayoutPanel7
+        'dtpFechaDeNacimiento
         '
-        Me.FlowLayoutPanel7.BackColor = System.Drawing.Color.Transparent
-        Me.FlowLayoutPanel7.Controls.Add(Me.Label1)
-        Me.FlowLayoutPanel7.Controls.Add(Me.lblCode)
-        Me.FlowLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.FlowLayoutPanel7.FlowDirection = System.Windows.Forms.FlowDirection.TopDown
-        Me.FlowLayoutPanel7.Location = New System.Drawing.Point(0, 0)
-        Me.FlowLayoutPanel7.Name = "FlowLayoutPanel7"
-        Me.FlowLayoutPanel7.Size = New System.Drawing.Size(858, 522)
-        Me.FlowLayoutPanel7.TabIndex = 69
+        Me.dtpFechaDeNacimiento.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtpFechaDeNacimiento.Location = New System.Drawing.Point(652, 147)
+        Me.dtpFechaDeNacimiento.MaxDate = New Date(2024, 12, 31, 0, 0, 0, 0)
+        Me.dtpFechaDeNacimiento.MinDate = New Date(1980, 1, 1, 0, 0, 0, 0)
+        Me.dtpFechaDeNacimiento.Name = "dtpFechaDeNacimiento"
+        Me.dtpFechaDeNacimiento.Size = New System.Drawing.Size(173, 20)
+        Me.dtpFechaDeNacimiento.TabIndex = 34
+        '
+        'lblCode
+        '
+        Me.lblCode.AutoSize = True
+        Me.lblCode.Location = New System.Drawing.Point(3, 0)
+        Me.lblCode.Name = "lblCode"
+        Me.lblCode.Size = New System.Drawing.Size(0, 13)
+        Me.lblCode.TabIndex = 0
         '
         'Label1
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.Transparent
-        Me.Label1.Location = New System.Drawing.Point(3, 0)
+        Me.Label1.Location = New System.Drawing.Point(9, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(163, 30)
         Me.Label1.TabIndex = 1
         Me.Label1.Text = "Editor de cliente"
         '
-        'lblCode
+        'FlowLayoutPanel7
         '
-        Me.lblCode.AutoSize = True
-        Me.lblCode.Location = New System.Drawing.Point(3, 30)
-        Me.lblCode.Name = "lblCode"
-        Me.lblCode.Size = New System.Drawing.Size(0, 13)
-        Me.lblCode.TabIndex = 0
+        Me.FlowLayoutPanel7.BackColor = System.Drawing.Color.Transparent
+        Me.FlowLayoutPanel7.Controls.Add(Me.lblCode)
+        Me.FlowLayoutPanel7.Controls.Add(Me.Label1)
+        Me.FlowLayoutPanel7.Location = New System.Drawing.Point(0, 0)
+        Me.FlowLayoutPanel7.Name = "FlowLayoutPanel7"
+        Me.FlowLayoutPanel7.Size = New System.Drawing.Size(856, 516)
+        Me.FlowLayoutPanel7.TabIndex = 69
         '
         'EditorDeClientes
         '
@@ -504,8 +496,8 @@ Partial Class EditorDeClientes
         Me.ClientSize = New System.Drawing.Size(858, 522)
         Me.Controls.Add(Me.pbVisualizador)
         Me.Controls.Add(Me.btnRegresar)
-        Me.Controls.Add(Me.Panel5)
         Me.Controls.Add(Me.dtpFechaDeNacimiento)
+        Me.Controls.Add(Me.Panel5)
         Me.Controls.Add(Me.Panel4)
         Me.Controls.Add(Me.cbEstadoCivil)
         Me.Controls.Add(Me.Panel3)
@@ -544,7 +536,6 @@ Partial Class EditorDeClientes
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents dtpFechaDeNacimiento As DateTimePicker
     Friend WithEvents Panel4 As Panel
     Friend WithEvents cbEstadoCivil As ComboBox
     Friend WithEvents Panel3 As Panel
@@ -578,7 +569,8 @@ Partial Class EditorDeClientes
     Friend WithEvents btnRegresar As Button
     Friend WithEvents FlowLayoutPanel6 As FlowLayoutPanel
     Friend WithEvents FlowLayoutPanel4 As FlowLayoutPanel
-    Friend WithEvents FlowLayoutPanel7 As FlowLayoutPanel
+    Friend WithEvents dtpFechaDeNacimiento As DateTimePicker
     Friend WithEvents lblCode As Label
     Friend WithEvents Label1 As Label
+    Friend WithEvents FlowLayoutPanel7 As FlowLayoutPanel
 End Class

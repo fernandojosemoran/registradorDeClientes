@@ -2,7 +2,7 @@
 Imports Npgsql
 
 <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class CreateClient
+Partial Class CreateRegistro
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -25,7 +25,7 @@ Partial Class CreateClient
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(CreateClient))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(CreateRegistro))
         Me.pbVisualizador = New System.Windows.Forms.PictureBox()
         Me.btnBuscarImagen = New System.Windows.Forms.Button()
         Me.lblAlerts = New System.Windows.Forms.Label()
@@ -45,7 +45,6 @@ Partial Class CreateClient
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.cbEstadoCivil = New System.Windows.Forms.ComboBox()
-        Me.dtpFechaDeNacimiento = New System.Windows.Forms.DateTimePicker()
         Me.btnRegresar = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.btnMinimizarVentana = New System.Windows.Forms.Button()
@@ -55,6 +54,7 @@ Partial Class CreateClient
         Me.btnExpandir = New System.Windows.Forms.Button()
         Me.btnCerrar = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.dtpFechaDeNacimiento = New System.Windows.Forms.DateTimePicker()
         CType(Me.pbVisualizador, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
@@ -264,23 +264,6 @@ Partial Class CreateClient
         Me.cbEstadoCivil.Size = New System.Drawing.Size(173, 21)
         Me.cbEstadoCivil.TabIndex = 25
         '
-        'dtpFechaDeNacimiento
-        '
-        Me.dtpFechaDeNacimiento.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.dtpFechaDeNacimiento.CalendarFont = New System.Drawing.Font("Segoe UI", 8.25!)
-        Me.dtpFechaDeNacimiento.Checked = False
-        Me.dtpFechaDeNacimiento.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpFechaDeNacimiento.Location = New System.Drawing.Point(604, 142)
-        Me.dtpFechaDeNacimiento.MaxDate = New Date(2024, 12, 31, 0, 0, 0, 0)
-        Me.dtpFechaDeNacimiento.MinDate = New Date(1980, 1, 1, 0, 0, 0, 0)
-        Me.dtpFechaDeNacimiento.Name = "dtpFechaDeNacimiento"
-        Me.dtpFechaDeNacimiento.RightToLeftLayout = True
-        Me.dtpFechaDeNacimiento.Size = New System.Drawing.Size(173, 20)
-        Me.dtpFechaDeNacimiento.TabIndex = 29
-        Me.dtpFechaDeNacimiento.UseWaitCursor = True
-        '
         'btnRegresar
         '
         Me.btnRegresar.BackColor = System.Drawing.Color.Transparent
@@ -391,6 +374,16 @@ Partial Class CreateClient
         Me.Label1.TabIndex = 32
         Me.Label1.Text = "Crear cliente"
         '
+        'dtpFechaDeNacimiento
+        '
+        Me.dtpFechaDeNacimiento.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtpFechaDeNacimiento.Location = New System.Drawing.Point(604, 141)
+        Me.dtpFechaDeNacimiento.MaxDate = New Date(2024, 12, 31, 0, 0, 0, 0)
+        Me.dtpFechaDeNacimiento.MinDate = New Date(1980, 1, 1, 0, 0, 0, 0)
+        Me.dtpFechaDeNacimiento.Name = "dtpFechaDeNacimiento"
+        Me.dtpFechaDeNacimiento.Size = New System.Drawing.Size(173, 20)
+        Me.dtpFechaDeNacimiento.TabIndex = 33
+        '
         'CreateClient
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -398,10 +391,10 @@ Partial Class CreateClient
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(872, 512)
+        Me.Controls.Add(Me.dtpFechaDeNacimiento)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.btnRegresar)
-        Me.Controls.Add(Me.dtpFechaDeNacimiento)
         Me.Controls.Add(Me.Panel4)
         Me.Controls.Add(Me.cbEstadoCivil)
         Me.Controls.Add(Me.Panel3)
@@ -452,7 +445,6 @@ Partial Class CreateClient
     Friend WithEvents Panel3 As Panel
     Friend WithEvents Panel4 As Panel
     Friend WithEvents cbEstadoCivil As ComboBox
-    Friend WithEvents dtpFechaDeNacimiento As DateTimePicker
     Friend WithEvents btnRegresar As Button
     Friend WithEvents Panel1 As Panel
     Friend WithEvents btnMinimizarVentana As Button
@@ -462,4 +454,5 @@ Partial Class CreateClient
     Friend WithEvents btnExpandir As Button
     Friend WithEvents btnCerrar As Button
     Friend WithEvents Label1 As Label
+    Friend WithEvents dtpFechaDeNacimiento As DateTimePicker
 End Class

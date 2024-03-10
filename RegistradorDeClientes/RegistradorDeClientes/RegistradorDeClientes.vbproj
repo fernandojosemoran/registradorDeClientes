@@ -53,6 +53,9 @@
     <Reference Include="FluentValidation, Version=11.0.0.0, Culture=neutral, PublicKeyToken=7de548da2fbae0f0, processorArchitecture=MSIL">
       <HintPath>..\packages\FluentValidation.11.9.0\lib\netstandard2.0\FluentValidation.dll</HintPath>
     </Reference>
+    <Reference Include="MaterialSkin, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialSkin.Net4.1.0.0\lib\net40\MaterialSkin.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.8.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
@@ -128,18 +131,20 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="dbFunctionalities\DbAutenticaciontFuncionalidades.vb" />
-    <Compile Include="dbFunctionalities\DbClienteFuncionalidades.vb" />
-    <Compile Include="CreateClient.Designer.vb">
-      <DependentUpon>CreateClient.vb</DependentUpon>
+    <Compile Include="Helpers\CAyudador.vb" />
+    <Compile Include="Helpers\CInteraccionGlobal.vb" />
+    <Compile Include="dbFunctionalities\CDbAutenticaciontFuncionalidades.vb" />
+    <Compile Include="dbFunctionalities\CDbRegistroFuncionalidades.vb" />
+    <Compile Include="CreateRegistro.Designer.vb">
+      <DependentUpon>CreateRegistro.vb</DependentUpon>
     </Compile>
-    <Compile Include="CreateClient.vb">
+    <Compile Include="CreateRegistro.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EditorDeClientes.Designer.vb">
-      <DependentUpon>EditorDeClientes.vb</DependentUpon>
+    <Compile Include="EditorDeRegistros.Designer.vb">
+      <DependentUpon>EditorDeRegistros.vb</DependentUpon>
     </Compile>
-    <Compile Include="EditorDeClientes.vb">
+    <Compile Include="EditorDeRegistros.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.vb">
@@ -149,14 +154,15 @@
       <DependentUpon>Form1.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ListadorDeClientes.Designer.vb">
-      <DependentUpon>ListadorDeClientes.vb</DependentUpon>
+    <Compile Include="Helpers\MaterialUI.vb" />
+    <Compile Include="ListadorDeRegistros.Designer.vb">
+      <DependentUpon>ListadorDeRegistros.vb</DependentUpon>
     </Compile>
-    <Compile Include="ListadorDeClientes.vb">
+    <Compile Include="ListadorDeRegistros.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Models\AutenticacionModel.vb" />
-    <Compile Include="Models\ClientModel.vb" />
+    <Compile Include="Models\CAutenticacionModelo.vb" />
+    <Compile Include="Models\CRegistroModelo.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -172,21 +178,21 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="ValidationSchemas\AutenticacionValidacionSchema.vb" />
-    <Compile Include="ValidationSchemas\ValidationClientSchema.vb" />
+    <Compile Include="ValidationSchemas\CAutenticacionValidacionSchema.vb" />
+    <Compile Include="ValidationSchemas\CValidacionRegistroSchema.vb" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="CreateClient.resx">
-      <DependentUpon>CreateClient.vb</DependentUpon>
+    <EmbeddedResource Include="CreateRegistro.resx">
+      <DependentUpon>CreateRegistro.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditorDeClientes.resx">
-      <DependentUpon>EditorDeClientes.vb</DependentUpon>
+    <EmbeddedResource Include="EditorDeRegistros.resx">
+      <DependentUpon>EditorDeRegistros.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ListadorDeClientes.resx">
-      <DependentUpon>ListadorDeClientes.vb</DependentUpon>
+    <EmbeddedResource Include="ListadorDeRegistros.resx">
+      <DependentUpon>ListadorDeRegistros.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -209,7 +215,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="logs\" />
     <Folder Include="tmp\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

@@ -1,14 +1,13 @@
 ﻿'Llamamos las librerias correspondientes'
 Imports System.Data.SqlClient
-
-Public Class DbAutenticaciontFuncionalidades
+Public Class CDbAutenticaciontFuncionalidades
     'El metodo ObtenerUsuarioDeAutenticacion tiene como objectivo devolvernos datos para verificar la autenticidad del usuario intentando ingresar al panel de registro'
     Public Function ObtenerUsuarioDeAutenticacion() As DataTable
         'Creamos un objecto DataTable el cual nos permitira almacenar datos con una estructura similar a una tabla, es decir que tenga filas y columnas como las bases de datos'
         Dim tablaDeDatos As New DataTable()
         'Realizamos la conexion a la base de datos protegida por una variable de ambiente o entorno'
-        'Esto veneficia a la seguridad de los datos de los clientes, en caso de que alguien con malas intenciones quiera robar cierta informacion'
-        Dim conexionConSQL As New SqlConnection(Environment.GetEnvironmentVariable("DB_STORE_EXPRESS"))
+        'Esto veneficia a la seguridad de los datos de los registros, en caso de que alguien con malas intenciones quiera robar cierta informacion'
+        Dim conexionConSQL As New SqlConnection(Environment.GetEnvironmentVariable("DB_REGISTRADOR"))
         'Declaramos una variable que contiene un texto que sera una consulta a la base de datos piendo informacion en esta caso sera los valores del email, nombre, contrasena del usuario'
         'El cual despues usaremos para verificar la autenticacion del usuario que intente ingresar al panel de registro'
         'Usamos variables de entorno para proteger el nombre autentico de la tabla'
@@ -28,7 +27,8 @@ Public Class DbAutenticaciontFuncionalidades
             lectorDeDatos.Close()
         Catch ex As Exception
             'Si existe un error que me los registre en un fichero .log'
-            MessageBox.Show(ex.Message)
+
+            CInteraccionGlobal.AddText(ex.Message)
         Finally
             'cerramos la conexion a la base de datos'
             'esto es importantes para que la base de datos no mantenga procesos en escucha ya que por defecto suelen tener un limite de llamadas y estan se van acumulando si no se cierran'

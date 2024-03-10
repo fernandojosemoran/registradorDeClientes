@@ -1,4 +1,4 @@
-﻿Public Class ClientModel
+﻿Public Class CRegistroModelo
     Public id As Integer
     Public code As String
     Public nombre As String

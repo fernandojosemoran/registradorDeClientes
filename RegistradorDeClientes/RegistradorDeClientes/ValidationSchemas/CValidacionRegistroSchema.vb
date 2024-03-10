@@ -1,6 +1,6 @@
 ﻿Imports FluentValidation
-Public Class ValidationClientSchema
-    Inherits AbstractValidator(Of ClientModel)
+Public Class CValidacionRegistroSchema
+    Inherits AbstractValidator(Of CRegistroModelo)
     Private Function PersonalizarMensaje(errorDeCampo As String, complementoMensaje As String) As String
         Return $"Error en el campo {errorDeCampo}: {complementoMensaje}"
     End Function
@@ -14,7 +14,7 @@ Public Class ValidationClientSchema
             WithMessage(
                 PersonalizarMensaje(
                     "Nombre",
-                    "Nombre no es valido o esta vacio, solo se aceptan letras con un minimo de 8 caracteres y un maximo de 20"
+                    "no es valido o esta vacio, solo se aceptan letras con un minimo de 8 caracteres y un maximo de 20"
                 )
             )
 
@@ -24,7 +24,7 @@ Public Class ValidationClientSchema
             WithMessage(
                 PersonalizarMensaje(
                     "Apellido",
-                    "Apellido no es valido o esta vacio, solo se aceptan letras con un minimo de 8 caracteres y un maximo de 30"
+                    "no es valido o esta vacio, solo se aceptan letras con un minimo de 8 caracteres y un maximo de 30"
                 )
             )
 
@@ -35,7 +35,7 @@ Public Class ValidationClientSchema
             WithMessage(
                 PersonalizarMensaje(
                     "Email",
-                    "Email no es valido o esta vacio"
+                    "no es valido o esta vacio"
                 )
             )
 
@@ -47,7 +47,7 @@ Public Class ValidationClientSchema
             WithMessage(
                 PersonalizarMensaje(
                     "Telefono",
-                    "Telefono no es valido o esta vacio, solo se aceptan numeros con una longitud de 8 numeros"
+                    "no es valido o esta vacio, solo se aceptan numeros con una longitud de 8 numeros"
                 )
             )
 
@@ -57,7 +57,7 @@ Public Class ValidationClientSchema
             WithMessage(
                 PersonalizarMensaje(
                     "Direccion",
-                    "La direccion no es valida o esta vacia, solo se aceptan letras con una minimo de 6 caracteres y un maximo de 50"
+                    "no es valida o esta vacia, solo se aceptan letras con una minimo de 6 caracteres y un maximo de 50"
                 )
            )
 

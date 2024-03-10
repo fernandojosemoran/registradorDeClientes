@@ -1,9 +1,9 @@
 ﻿'Hacemos las importaciones de las librerias correspondientes'
 Imports FluentValidation 'Esta libreria es la que nos ayudara a poder hacer las filtraciones de los valores ingresador por el usuario'
 
-Public Class AutenticacionValidacionSchema
+Public Class CAutenticacionValidacionSchema
     'Hacemos herencia de la clase AutenticacionModel para poder hacer uso de sus metodos y propiedades'
-    Inherits AbstractValidator(Of AutenticacionModel)
+    Inherits AbstractValidator(Of CAutenticacionModelo)
 
     'Hacemos una secuencia de patrones que nos permita deducion si el usuario tiene malas intenciones he intenta inyectar caracteres maliciosos'
     Private NoInyeccionSQL As String = "^\([a-z]|[A-Z])\+$"

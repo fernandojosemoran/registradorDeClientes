@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class ListadorDeClientes
+Partial Class ListadorDeRegistros
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -23,9 +23,9 @@ Partial Class ListadorDeClientes
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ListadorDeClientes))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ListadorDeRegistros))
         Me.btnAgregarCliente = New System.Windows.Forms.Button()
-        Me.dgListaDeUsuarios = New System.Windows.Forms.DataGridView()
+        Me.dgListaDeRegistros = New System.Windows.Forms.DataGridView()
         Me.txtBuscar = New System.Windows.Forms.TextBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.btnReload = New System.Windows.Forms.Button()
@@ -40,7 +40,7 @@ Partial Class ListadorDeClientes
         Me.pnlBuscar = New System.Windows.Forms.Panel()
         Me.cbFiltrador = New System.Windows.Forms.ComboBox()
         Me.toolTip = New System.Windows.Forms.ToolTip(Me.components)
-        CType(Me.dgListaDeUsuarios, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgListaDeRegistros, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.Panel3.SuspendLayout()
         Me.SuspendLayout()
@@ -59,16 +59,16 @@ Partial Class ListadorDeClientes
         Me.btnAgregarCliente.TabIndex = 0
         Me.btnAgregarCliente.UseVisualStyleBackColor = True
         '
-        'dgListaDeUsuarios
+        'dgListaDeRegistros
         '
-        Me.dgListaDeUsuarios.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
-        Me.dgListaDeUsuarios.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.dgListaDeUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgListaDeUsuarios.GridColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(60, Byte), Integer), CType(CType(60, Byte), Integer))
-        Me.dgListaDeUsuarios.Location = New System.Drawing.Point(57, 71)
-        Me.dgListaDeUsuarios.Name = "dgListaDeUsuarios"
-        Me.dgListaDeUsuarios.Size = New System.Drawing.Size(827, 418)
-        Me.dgListaDeUsuarios.TabIndex = 2
+        Me.dgListaDeRegistros.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
+        Me.dgListaDeRegistros.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.dgListaDeRegistros.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgListaDeRegistros.GridColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(60, Byte), Integer), CType(CType(60, Byte), Integer))
+        Me.dgListaDeRegistros.Location = New System.Drawing.Point(36, 72)
+        Me.dgListaDeRegistros.Name = "dgListaDeRegistros"
+        Me.dgListaDeRegistros.Size = New System.Drawing.Size(827, 418)
+        Me.dgListaDeRegistros.TabIndex = 2
         '
         'txtBuscar
         '
@@ -233,20 +233,20 @@ Partial Class ListadorDeClientes
         Me.cbFiltrador.TabIndex = 9
         Me.cbFiltrador.Tag = ""
         '
-        'ListadorDeClientes
+        'ListadorDeRegistros
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(917, 534)
-        Me.Controls.Add(Me.dgListaDeUsuarios)
+        Me.ClientSize = New System.Drawing.Size(901, 534)
+        Me.Controls.Add(Me.dgListaDeRegistros)
         Me.Controls.Add(Me.Panel1)
         Me.DoubleBuffered = True
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
-        Me.Name = "ListadorDeClientes"
+        Me.Name = "ListadorDeRegistros"
         Me.Text = "ListadorDeClientes"
-        CType(Me.dgListaDeUsuarios, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgListaDeRegistros, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         Me.Panel3.ResumeLayout(False)
@@ -256,7 +256,7 @@ Partial Class ListadorDeClientes
     End Sub
 
     Friend WithEvents btnAgregarCliente As Button
-    Friend WithEvents dgListaDeUsuarios As DataGridView
+    Friend WithEvents dgListaDeRegistros As DataGridView
     Friend WithEvents txtBuscar As TextBox
     Friend WithEvents Panel1 As Panel
     Friend WithEvents pnlBuscar As Panel

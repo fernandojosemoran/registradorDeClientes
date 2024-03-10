@@ -1,57 +1,12 @@
-﻿
+﻿Imports System.Threading
 Imports FluentValidation.Results
 
-Public Class CreateClient
+Public Class EditorDeRegistros
     'Declaramos dos variables que nos permitan calcular los ejes x y y de la ventana'
     'Esto sera de utilidad para despues poder arrastrar la ventana'
-    Private xOffset As Integer
-    Private yOffset As Integer
-    Private Sub CreateClient_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'Usamos la variable consejo declara e inicializada anteriormente con una instancia de un controlador que nos ayudara dirigir al usuario de como usar el programa'
-        Dim consejo As New ToolTip()
-
-        consejo.SetToolTip(btnListo, "Aceptar")
-        consejo.SetToolTip(btnRegresar, "Regresar a tabla de registro")
-        consejo.SetToolTip(txtApellido, "Ingrse su apellido")
-        consejo.SetToolTip(txtDireccion, "Ingrese su direccion, haga uso de lo siguiente: ciudad,barrio,aldea,pueblo,pais")
-        consejo.SetToolTip(txtEmail, "Ingrese un correo electronico")
-        consejo.SetToolTip(txtTelefono, "Ingrese un numero de telefono")
-        consejo.SetToolTip(cbEstadoCivil, "Seleccione un estado civil")
-        consejo.SetToolTip(cbGenero, "Seleccione un genero")
-        consejo.SetToolTip(dtpFechaDeNacimiento, "Seleccione su fecha de nacimiento")
-
-        'Me.cbEstadoCivil = New System.Windows.Forms.ComboBox()
-        'Dim cbEstadoCivilItems As String() = {
-        '    "Soltero",
-        '    "Casado"
-        '}
-
-        'cbEstadoCivil.Items.Add(cbEstadoCivilItems)
-
-        'Me.cbEstadoCivil.Location = New System.Drawing.Point(628, 264)
-        'Me.cbEstadoCivil.IntegralHeight = False
-        'Me.cbEstadoCivil.MaxDropDownItems = 5
-        'Me.cbEstadoCivil.DropDownStyle = ComboBoxStyle.DropDownList
-        'Me.cbEstadoCivil.Name = "cbEstadoCivil"
-        'Me.cbEstadoCivil.Size = New System.Drawing.Size(173, 24)
-        'Me.cbEstadoCivil.TabIndex = 0
-        'Me.Controls.Add(Me.cbEstadoCivil)
-    End Sub
-
-    Private Sub CreateClient_MouseDown(sender As Object, e As MouseEventArgs) Handles MyBase.MouseDown
-        If e.Button = MouseButtons.Left Then
-            ' Almacenar la posición del mouse al hacer clic en la ventana
-            xOffset = e.X
-            yOffset = e.Y
-        End If
-    End Sub
-
-    Private Sub CreateClient_MouseMove(sender As Object, e As MouseEventArgs) Handles MyBase.MouseMove
-        If e.Button = MouseButtons.Left Then
-            ' Mover la ventana según la posición del mouse actual y la posición donde se hizo clic inicialmente
-            Me.Location = New Point(Me.Left + e.X - xOffset, Me.Top + e.Y - yOffset)
-        End If
-    End Sub
+    Private _xOffset As Integer
+    Private _yOffset As Integer
+    Private _Ayuda As New CAyudador()
 
     Private Sub btnCerrar_Click(sender As Object, e As EventArgs) Handles btnCerrarVentana.Click
         'Si el usuario da click al boton cerrar entonces cerramos el programa'
@@ -66,10 +21,12 @@ Public Class CreateClient
         Else
             'si no esta expandida en toda la pantalla entonces la expandimos'
             Me.WindowState = FormWindowState.Maximized
+            'pbvisualizador.size = new size(1050, 400)
+            'btnbuscarimagen.location = new point(370, 415)
         End If
     End Sub
 
-    Private Sub btnMinimizarVentana_Click(sender As Object, e As EventArgs) Handles btnMinimizarVentana.Click
+    Private Sub btnMinimizar_Click(sender As Object, e As EventArgs) Handles btnMinimizarVentana.Click
         'si no esta expandida en toda la pantalla entonces la expandimos'
         Me.WindowState = FormWindowState.Minimized
     End Sub
@@ -102,7 +59,7 @@ Public Class CreateClient
 
     Private Sub btnListo_Click(sender As Object, e As EventArgs) Handles btnListo.Click
         'Instanciamos la clase ClientModel que contiene el modelo de filtros'
-        Dim modeloDeCliente As New ClientModel()
+        Dim modeloDeCliente As New CRegistroModelo()
 
         'Creamos un metodo que nos ayude a verificar si los textBox tienen el mismo texto, de ser ese el caso es un texto de relleno'
         'Echo unicamente para ayudar al usuario que datos ingresar en cada textbox'
@@ -127,26 +84,21 @@ Public Class CreateClient
         'De los dos datos es valido para guardar en la base de datos.'
         modeloDeCliente.SetEstadoCivil = cbEstadoCivil.Text
         modeloDeCliente.SetGenero = cbGenero.Text
-        modeloDeCliente.SetFechaDeRegistro = DateTime.Now 'Asignamos la fecha actual antes de guardarla a la base de datos'
 
         'Instanciamos la clase ValidationClientSchema que contiene los datos asignados mediante los setters que son metodos que modifican los valores de las propiedades'\
         'Esta clase contiene el validador de los datos que queremos filtrar para saber si son correctos y de esta forma el usuario no envie datos erroneos a la base de datos.'
-        Dim validador As ValidationClientSchema = New ValidationClientSchema()
-
-        'Declaramos una variable reuslt que contiene un tipo ValidationResult que verifica que los datos ingresados por el usaurio sean validos'
-        'Esto se logra mediante el metododo Validate() de la clase ValidationClientSchema'
+        Dim validador As CValidacionRegistroSchema = New CValidacionRegistroSchema()
         Dim result As ValidationResult = validador.Validate(modeloDeCliente)
 
-        'Si los valores dados por el usuario son validos entonces CrearCliente() que nos ayudara a crear un nuevo registro en la base de datos'
+        'Si los valores dados por el usuario son validos entonces EditorDeClientes() que nos ayudara a crear un nuevo registro en la base de datos'
         If result.IsValid Then
             Try
                 'Instanceamos una la clase DbClienteFuncionalidades que contiene metodos para comunicarnos con la base de datos'
                 'En esta ocacion usaremos el metodo'
-                Dim interactuarConBaseDeDatos As New DbClienteFuncionalidades()
+                Dim interactuarConBaseDeDatos As New CDbRegistroFuncionalidades()
 
                 'Llamamos el metodo CrearCliente para crear un registro'
-                interactuarConBaseDeDatos.CrearCliente(
-                    Code:=Guid.NewGuid().ToString(), 'Asignamos un codigo unico al campo codigo de la base de datos'
+                interactuarConBaseDeDatos.ActualizarUnRegistro(
                     nombre:=txtNombre.Text,
                     apellido:=txtApellido.Text,
                     email:=txtEmail.Text,
@@ -155,25 +107,67 @@ Public Class CreateClient
                     fechaNacimiento:=dtpFechaDeNacimiento.Value.Date.ToString("yyyy-MM-dd"), 'Guardamos la fecha con el orden de valores año/mes/dia por que es el orden que la base de datos acepta'
                     genero:=cbGenero.Text,
                     estadoCivil:=cbEstadoCivil.Text,
-                    fechaRegistro:=DateTime.Now.ToString("yyyy-MM-dd")'Guardamos la fecha con el orden de valores año/mes/dia por que es el orden que la base de datos acepta'
+                    code:=lblCode.Text
                 )
+
                 'Mostramos el formulario de listadoDeClientes'
-                ListadorDeClientes.Show()
-                'Luego lo ocultamos pero no lo cerramos de todo esto ayuda a que la aplicacion opere mas rapido los formularios ya que el formulario queda guardado en memoria'
+                ListadorDeRegistros.Show()
+                'Luego lo ocultamos pero no lo cerramos totalmente pero esto ayuda a que la aplicacion opere mas rapido los formularios ya que el formulario queda guardado en memoria'
                 'Si quieres cerrar el formulario totalmente sin guardarlo en memoria y liberar espacio de tu RAM puedes usar Me.Close()'
                 Me.Hide()
             Catch ex As Exception
                 'Guardamos el error en un archivo.log para tener mas control de los errores y poder observarlos de forma que no interrumpa la operabilidad del usario'
                 'Ademas llevar un registro de ellos ayuda a saber que problemas debes de solucionar para mejorar la funcionalidad del programa'
-                MessageBox.Show($"Error al crear cliente: {ex.Message}")
+                CInteraccionGlobal.AddText(ex.Message)
             End Try
         Else
-            'En caso que los datos ingresados por el usuario sean invalidos, los mostraremos en un textBox llamado txtAlertas donde el usuario podra observar en que campo se equivoco'
-            'Los errores que el usuario observara son errores personalizados, no errores del programa como tal'
-            For Each [err] As ValidationFailure In result.Errors 'Usamos un bucle for que recorra todos los errores existentes'
+            Dim errorActual As String = ""
+            For Each [err] As ValidationFailure In result.Errors
                 'Mostramos los errores al usuario
                 lblAlerts.Text = [err].ErrorMessage
+                errorActual = [err].ErrorMessage
             Next
+            CInteraccionGlobal.AddText(errorActual)
+        End If
+    End Sub
+
+    Private Sub btnRegresar_Click(sender As Object, e As EventArgs) Handles btnRegresar.Click
+        'Luego lo ocultamos el formulario actual pero no lo cerramos de totalmente pero esto ayuda a que la aplicacion opere mas rapido los formularios ya que el formulario queda guardado en memoria'
+        'Si quieres cerrar el formulario totalmente sin guardarlo en memoria y liberar espacio de tu RAM puedes usar Me.Close()'
+        ListadorDeRegistros.Show()
+        Me.Hide()
+    End Sub
+
+
+    Private Sub EditorDeClientes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'Centramos el programa al centro de la pantalla'
+        Me.CenterToScreen()
+        'Usamos la variable consejo declara e inicializada anteriormente con una instancia de un controlador que nos ayudara dirigir al usuario de como usar el programa'
+        Dim consejo As New ToolTip()
+
+        consejo.SetToolTip(btnListo, "Aceptar")
+        consejo.SetToolTip(btnRegresar, "Regresar a tabla de registro") 'Cuando el mouse pose encima del boton de Regresar entonces mostrar mensaje Regresar a tabla de registro'
+        consejo.SetToolTip(txtApellido, "Ingrse su apellido") 'Cuando el mouse pose encima del textbox de apellido entonces mostrar mensaje Ingrse su apellido'
+        consejo.SetToolTip(txtDireccion, "Ingrese su direccion, haga uso de lo siguiente: ciudad,barrio,aldea,pueblo,pais") 'Cuando el mouse pose encima del textbox de direccion entonces mostrar mensaje Ingrese su direccion, haga uso de lo siguiente: ciudad,barrio,aldea,pueblo,pais'
+        consejo.SetToolTip(txtEmail, "Ingrese un correo electronico") 'Cuando el mouse pose encima del textbox de email entonces mostrar mensaje Ingrese un correo electronico'
+        consejo.SetToolTip(txtTelefono, "Ingrese un numero de telefono") 'Cuando el mouse pose encima del textbox de telefono entonces mostrar mensaje Ingrese un numero de telefono'
+        consejo.SetToolTip(cbEstadoCivil, "Seleccione un estado civil") 'Cuando el mouse pose encima del ComboBox de estadoCivil entonces mostrar mensaje Seleccione un estado civil'
+        consejo.SetToolTip(cbGenero, "Seleccione un genero") 'Cuando el mouse pose encima del ComboBox de genero entonces mostrar mensaje Seleccione un genero'
+        consejo.SetToolTip(dtpFechaDeNacimiento, "Seleccione su fecha de nacimiento") 'Cuando el mouse pose encima del DataTimePicker de fehca de nacimiento entonces mostrar mensaje Seleccione su fecha de nacimiento'
+    End Sub
+
+    Private Sub EditorDeClientes_MouseDown(sender As Object, e As MouseEventArgs) Handles MyBase.MouseDown
+        If e.Button = MouseButtons.Left Then
+            ' Almacenar la posición del mouse al hacer clic en la ventana
+            _xOffset = e.X
+            _yOffset = e.Y
+        End If
+    End Sub
+
+    Private Sub EditorDeClientes_MouseMove(sender As Object, e As MouseEventArgs) Handles MyBase.MouseMove
+        If e.Button = MouseButtons.Left Then
+            ' Mover la ventana según la posición del mouse actual y la posición donde se hizo clic inicialmente
+            Me.Location = New Point(Me.Left + e.X - _xOffset, Me.Top + e.Y - _yOffset)
         End If
     End Sub
 
@@ -237,9 +231,19 @@ Public Class CreateClient
         End If
     End Sub
 
-    Private Sub btnRegresar_Click(sender As Object, e As EventArgs) Handles btnRegresar.Click
-        ListadorDeClientes.Show()
-        Me.Hide()
+    Private Sub FlowLayoutPanel7_MouseDown(sender As Object, e As MouseEventArgs) Handles FlowLayoutPanel7.MouseDown
+        If e.Button = MouseButtons.Left Then
+            ' Almacenar la posición del mouse al hacer clic en la ventana
+            _xOffset = e.X
+            _yOffset = e.Y
+        End If
+    End Sub
+
+    Private Sub FlowLayoutPanel7_MouseMove(sender As Object, e As MouseEventArgs) Handles FlowLayoutPanel7.MouseMove
+        If e.Button = MouseButtons.Left Then
+            ' Mover la ventana según la posición del mouse actual y la posición donde se hizo clic inicialmente
+            Me.Location = New Point(Me.Left + e.X - _xOffset, Me.Top + e.Y - _yOffset)
+        End If
     End Sub
 
 End Class

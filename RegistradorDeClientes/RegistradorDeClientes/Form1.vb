@@ -11,6 +11,8 @@ Public Class Form1
 
     ''
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'Centramos el programa al centro de la pantalla'
+        Me.CenterToScreen()
         'Declaramos e inicializamos una variable llamda NombreDeProceso que servira para despues buscar un proceso en el sistema con ese nombre'
         Dim NombreDeProceso As String = "RegistradorDeClientes"
 
@@ -57,68 +59,77 @@ Public Class Form1
     End Sub
 
     Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnAceptar.Click
-        'Intanciamos el formulario que mostrara los clientes registrados existentes'
-        Dim formListarClientes As New ListadorDeClientes()
-        'Instanciamos el objecto que contiene las funcionalidades que interactuan con las base de datos'
-        Dim dbAutenticacion As New DbAutenticaciontFuncionalidades()
-        'Llamamos el metodo ObtenerUsuarioDeAutenticacion que nos devolvera un datatable con los datos del usuario'
-        Dim datos As DataTable = dbAutenticacion.ObtenerUsuarioDeAutenticacion()
-        'Creamos un diccionario donde almacenaremos los datos del usuario para manipularlos mas facilmente luego'
-        Dim datosDeUsuario As New Dictionary(Of String, String)()
-        ' Itera el objecto datatable que contiene los datos del usuario
-        For Each columna As DataColumn In datos.Columns
-            'Obtenemos el nombre de la columna
-            Dim nombreColumna As String = columna.ColumnName
-            ' Conseguimos el valor de la primera columna de la datatable y la convertimos en texto'
-            Dim valor As String = datos.Rows(0)(nombreColumna).ToString()
-            'Almacenamos los valores en un diccionario'
-            datosDeUsuario.Add(nombreColumna, valor)
-        Next
-
-        'Inicializamos y declaramos la variable emailDeUsuario que almacenara un texto del email, el cual sera llamado de un diccionario para luego usar esta informacion para validar la autenticacion'
-        Dim emailDeUsuario As String = datosDeUsuario.Item("Email")
-        'Inicializamos y declaramos la variable nombreDeUsuario que almacenara un texto del email, el cual sera llamado de un diccionario para luego usar esta informacion para validar la autenticacion'
-        Dim nombreDeUsuario As String = datosDeUsuario.Item("Nombre")
-        'Inicializamos y declaramos la variable contrasenaDeUsuario que almacenara un texto del email, el cual sera llamado de un diccionario para luego usar esta informacion para validar la autenticacion'
-        Dim contrasenaDeUsuario As String = datosDeUsuario.Item("Contrasena")
-        'Intanciamos la clase AutenticacionModel la cual tiene las propiedades que recibiran los datos que el usaurio ingrese'
-        Dim modeloDeAutenticacion As New AutenticacionModel()
-        'Creamos una funcion que nos permita ver si el textbox tiene texto de relleno por ejemplo Email,Usuario,Contrasena que solo le ayuda al usuario saber que valores ingresar a cada textbox'
-        Dim VerificarRelleno = Function(textActual As String, indicador As String) As String
-                                   If textActual = indicador Then
-                                       Return ""
-                                   End If
-
-                                   Return textActual
-                               End Function
-        'Ingresamos los valores ingresados por el usuario a la intancia de la clase que AutenticacionModel para despues usarlos para verificar los valores que el usuario ingreso'
-        modeloDeAutenticacion.SetEmail = VerificarRelleno(txtEmail.Text, "Email")
-        modeloDeAutenticacion.SetUsuario = VerificarRelleno(txtUsuario.Text, "Usuario")
-        modeloDeAutenticacion.SetContrasena = VerificarRelleno(txtPassword.Text, "Contrasena")
-
-        'Intanciamos la clase que tiene las validaciones echas para que el usuario ingrese los valores correspondientes'
-        Dim validador As New AutenticacionValidacionSchema()
-        'Creamos una variable result que contiene un resultado arrojado por la libreria FluentValidation'
-        Dim result = validador.Validate(modeloDeAutenticacion)
-
-        'Si los valores ingresados son correctos que permita verificar si las credenciales corresponden a los valores de la base de datos' 
-        If result.IsValid Then
-            'Verificamos si los valores ingresados por el usuario son validos'
-            'Si los valores de email, nombre y contrasena son iguales a los que la base de datos me entrego, entonces el usaurio es valido'
-            'Este usuario tiene un roll de empleado lo que significa que esta restringido en algunas cosas'
-            If txtEmail.Text = emailDeUsuario And txtPassword.Text = contrasenaDeUsuario And txtUsuario.Text = nombreDeUsuario Then
-                'Si los datos ingresados por el usuario son correctos entonces mostramos el formulario que contiene los registros de los clientes'
-                formListarClientes.Show()
-                'Despues ocultamos el formulario de autenticacion'
-                Me.Hide()
-            End If
-        Else
-            'recorremos los errores a la hora de autenticarce'
-            For Each [err] As ValidationFailure In result.Errors
-                'Ingresamos los errores al objecto label llamado lblAlerta que le mostrara cual fue el problema a la hora de autenticarce'
-                lblAlerta.Text = [err].ErrorMessage
+        Try
+            'Intanciamos el formulario que mostrara los clientes registrados existentes'
+            Dim formListarClientes As New ListadorDeRegistros()
+            'Instanciamos el objecto que contiene las funcionalidades que interactuan con las base de datos'
+            Dim dbAutenticacion As New CDbAutenticaciontFuncionalidades()
+            'Llamamos el metodo ObtenerUsuarioDeAutenticacion que nos devolvera un datatable con los datos del usuario'
+            Dim datos As DataTable = dbAutenticacion.ObtenerUsuarioDeAutenticacion()
+            'Creamos un diccionario donde almacenaremos los datos del usuario para manipularlos mas facilmente luego'
+            Dim datosDeUsuario As New Dictionary(Of String, String)()
+            ' Itera el objecto datatable que contiene los datos del usuario
+            For Each columna As DataColumn In datos.Columns
+                'Obtenemos el nombre de la columna
+                Dim nombreColumna As String = columna.ColumnName
+                ' Conseguimos el valor de la primera columna de la datatable y la convertimos en texto'
+                Dim valor As String = datos.Rows(0)(nombreColumna).ToString()
+                'Almacenamos los valores en un diccionario'
+                datosDeUsuario.Add(nombreColumna, valor)
             Next
-        End If
+
+            'Inicializamos y declaramos la variable emailDeUsuario que almacenara un texto del email, el cual sera llamado de un diccionario para luego usar esta informacion para validar la autenticacion'
+            Dim emailDeUsuario As String = datosDeUsuario.Item("Email")
+            'Inicializamos y declaramos la variable nombreDeUsuario que almacenara un texto del email, el cual sera llamado de un diccionario para luego usar esta informacion para validar la autenticacion'
+            Dim nombreDeUsuario As String = datosDeUsuario.Item("Nombre")
+            'Inicializamos y declaramos la variable contrasenaDeUsuario que almacenara un texto del email, el cual sera llamado de un diccionario para luego usar esta informacion para validar la autenticacion'
+            Dim contrasenaDeUsuario As String = datosDeUsuario.Item("Contrasena")
+            'Intanciamos la clase AutenticacionModel la cual tiene las propiedades que recibiran los datos que el usaurio ingrese'
+            Dim modeloDeAutenticacion As New CAutenticacionModelo()
+            'Creamos una funcion que nos permita ver si el textbox tiene texto de relleno por ejemplo Email,Usuario,Contrasena que solo le ayuda al usuario saber que valores ingresar a cada textbox'
+            Dim VerificarRelleno = Function(textActual As String, indicador As String) As String
+                                       If textActual = indicador Then
+                                           Return ""
+                                       End If
+
+                                       Return textActual
+                                   End Function
+            'Ingresamos los valores ingresados por el usuario a la intancia de la clase que AutenticacionModel para despues usarlos para verificar los valores que el usuario ingreso'
+            modeloDeAutenticacion.SetEmail = VerificarRelleno(txtEmail.Text, "Email")
+            modeloDeAutenticacion.SetUsuario = VerificarRelleno(txtUsuario.Text, "Usuario")
+            modeloDeAutenticacion.SetContrasena = VerificarRelleno(txtPassword.Text, "Contrasena")
+
+            'Intanciamos la clase que tiene las validaciones echas para que el usuario ingrese los valores correspondientes'
+            Dim validador As New CAutenticacionValidacionSchema()
+            'Creamos una variable result que contiene un resultado arrojado por la libreria FluentValidation'
+            Dim result = validador.Validate(modeloDeAutenticacion)
+
+            'Si los valores ingresados son correctos que permita verificar si las credenciales corresponden a los valores de la base de datos' 
+            If result.IsValid Then
+                'Verificamos si los valores ingresados por el usuario son validos'
+                'Si los valores de email, nombre y contrasena son iguales a los que la base de datos me entrego, entonces el usaurio es valido'
+                'Este usuario tiene un roll de empleado lo que significa que esta restringido en algunas cosas'
+                If txtEmail.Text = emailDeUsuario And txtPassword.Text = contrasenaDeUsuario And txtUsuario.Text = nombreDeUsuario Then
+                    'Si los datos ingresados por el usuario son correctos entonces mostramos el formulario que contiene los registros de los clientes'
+                    formListarClientes.Show()
+                    'Despues ocultamos el formulario de autenticacion'
+                    Me.Hide()
+                End If
+            Else
+                Dim errorActual As String = ""
+                'Recorremos los errores a la hora de autenticarce'
+                For Each [err] As ValidationFailure In result.Errors
+                    'Ingresamos los errores al objecto label llamado lblAlerta que le mostrara cual fue el problema a la hora de autenticarce'
+                    lblAlerta.Text = [err].ErrorMessage
+                    errorActual = [err].ErrorMessage
+                Next
+                CInteraccionGlobal.AddText(errorActual)
+            End If
+        Catch ex As Exception
+            'Guardamos el error en un archivo.log para tener mas control de los errores y poder observarlos de forma que no interrumpa la operabilidad del usario'
+            'Ademas llevar un registro de ellos ayuda a saber que problemas debes de solucionar para mejorar la funcionalidad del programa'
+            CInteraccionGlobal.AddText(ex.Message)
+        End Try
     End Sub
 
     Private Sub btnExpandirVentana_Click(sender As Object, e As EventArgs) Handles btnExpandirVentana.Click
@@ -192,5 +203,4 @@ Public Class Form1
             txtEmail.Text = "Email"
         End If
     End Sub
-
 End Class

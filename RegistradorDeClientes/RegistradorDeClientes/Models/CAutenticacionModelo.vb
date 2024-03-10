@@ -1,4 +1,4 @@
-﻿Public Class AutenticacionModel
+﻿Public Class CAutenticacionModelo
     Public usuario As String
     Public email As String
     Public contrasena As String

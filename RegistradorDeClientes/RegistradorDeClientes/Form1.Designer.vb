@@ -59,7 +59,7 @@ Partial Class Form1
         Me.pnlCamposDeAutenticacion.ForeColor = System.Drawing.Color.FromArgb(CType(CType(62, Byte), Integer), CType(CType(62, Byte), Integer), CType(CType(66, Byte), Integer))
         Me.pnlCamposDeAutenticacion.Location = New System.Drawing.Point(170, 73)
         Me.pnlCamposDeAutenticacion.Name = "pnlCamposDeAutenticacion"
-        Me.pnlCamposDeAutenticacion.Size = New System.Drawing.Size(456, 309)
+        Me.pnlCamposDeAutenticacion.Size = New System.Drawing.Size(456, 301)
         Me.pnlCamposDeAutenticacion.TabIndex = 0
         '
         'Panel4
@@ -67,7 +67,7 @@ Partial Class Form1
         Me.Panel4.BackColor = System.Drawing.Color.White
         Me.Panel4.BackgroundImage = CType(resources.GetObject("Panel4.BackgroundImage"), System.Drawing.Image)
         Me.Panel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.Panel4.Location = New System.Drawing.Point(90, 116)
+        Me.Panel4.Location = New System.Drawing.Point(95, 142)
         Me.Panel4.Name = "Panel4"
         Me.Panel4.Size = New System.Drawing.Size(24, 20)
         Me.Panel4.TabIndex = 7
@@ -75,7 +75,7 @@ Partial Class Form1
         'txtEmail
         '
         Me.txtEmail.Font = New System.Drawing.Font("Segoe UI", 8.25!)
-        Me.txtEmail.Location = New System.Drawing.Point(110, 116)
+        Me.txtEmail.Location = New System.Drawing.Point(115, 142)
         Me.txtEmail.Name = "txtEmail"
         Me.txtEmail.Size = New System.Drawing.Size(234, 22)
         Me.txtEmail.TabIndex = 6
@@ -86,7 +86,7 @@ Partial Class Form1
         Me.Panel2.BackColor = System.Drawing.Color.White
         Me.Panel2.BackgroundImage = CType(resources.GetObject("Panel2.BackgroundImage"), System.Drawing.Image)
         Me.Panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Panel2.Location = New System.Drawing.Point(90, 144)
+        Me.Panel2.Location = New System.Drawing.Point(95, 170)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(24, 20)
         Me.Panel2.TabIndex = 5
@@ -96,7 +96,7 @@ Partial Class Form1
         Me.Panel1.BackColor = System.Drawing.Color.White
         Me.Panel1.BackgroundImage = CType(resources.GetObject("Panel1.BackgroundImage"), System.Drawing.Image)
         Me.Panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Panel1.Location = New System.Drawing.Point(90, 88)
+        Me.Panel1.Location = New System.Drawing.Point(95, 114)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(24, 20)
         Me.Panel1.TabIndex = 4
@@ -105,17 +105,17 @@ Partial Class Form1
         '
         Me.lblNombreDeEmpresa.Font = New System.Drawing.Font("JetBrains Mono NL", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblNombreDeEmpresa.ForeColor = System.Drawing.Color.White
-        Me.lblNombreDeEmpresa.Location = New System.Drawing.Point(110, 17)
+        Me.lblNombreDeEmpresa.Location = New System.Drawing.Point(90, 28)
         Me.lblNombreDeEmpresa.Name = "lblNombreDeEmpresa"
-        Me.lblNombreDeEmpresa.Size = New System.Drawing.Size(235, 33)
+        Me.lblNombreDeEmpresa.Size = New System.Drawing.Size(255, 33)
         Me.lblNombreDeEmpresa.TabIndex = 3
-        Me.lblNombreDeEmpresa.Text = "Store Express"
+        Me.lblNombreDeEmpresa.Text = "Sistema de Registros"
         Me.lblNombreDeEmpresa.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'btnAceptar
         '
         Me.btnAceptar.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAceptar.Location = New System.Drawing.Point(185, 209)
+        Me.btnAceptar.Location = New System.Drawing.Point(190, 235)
         Me.btnAceptar.Name = "btnAceptar"
         Me.btnAceptar.Size = New System.Drawing.Size(75, 23)
         Me.btnAceptar.TabIndex = 0
@@ -125,7 +125,7 @@ Partial Class Form1
         'txtPassword
         '
         Me.txtPassword.Font = New System.Drawing.Font("Segoe UI", 8.25!)
-        Me.txtPassword.Location = New System.Drawing.Point(111, 144)
+        Me.txtPassword.Location = New System.Drawing.Point(116, 170)
         Me.txtPassword.Name = "txtPassword"
         Me.txtPassword.Size = New System.Drawing.Size(234, 22)
         Me.txtPassword.TabIndex = 2
@@ -134,7 +134,7 @@ Partial Class Form1
         'txtUsuario
         '
         Me.txtUsuario.Font = New System.Drawing.Font("Segoe UI", 8.25!)
-        Me.txtUsuario.Location = New System.Drawing.Point(110, 88)
+        Me.txtUsuario.Location = New System.Drawing.Point(115, 114)
         Me.txtUsuario.Name = "txtUsuario"
         Me.txtUsuario.Size = New System.Drawing.Size(234, 22)
         Me.txtUsuario.TabIndex = 1
@@ -231,9 +231,9 @@ Partial Class Form1
         Me.lblAlerta.BackColor = System.Drawing.Color.FromArgb(CType(CType(37, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(38, Byte), Integer))
         Me.lblAlerta.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblAlerta.ForeColor = System.Drawing.SystemColors.Control
-        Me.lblAlerta.Location = New System.Drawing.Point(170, 398)
+        Me.lblAlerta.Location = New System.Drawing.Point(170, 390)
         Me.lblAlerta.Name = "lblAlerta"
-        Me.lblAlerta.Size = New System.Drawing.Size(456, 36)
+        Me.lblAlerta.Size = New System.Drawing.Size(456, 44)
         Me.lblAlerta.TabIndex = 8
         Me.lblAlerta.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
